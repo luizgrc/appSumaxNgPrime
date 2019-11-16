@@ -1,0 +1,25 @@
+.layout-menu-container {
+  position: fixed;
+  height: 100%;
+  z-index: 999;
+  background-color: #212121;
+  @media (min-width: 897px) {
+    left: 0;
+    width: 250px;
+  }
+}
+.layout-menu-wrapper {
+  border-right: 1px solid #212121;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.layout-wrapper {
+  position: fixed;
+  height: 100%;
+  z-index: 999;
+}
+.layout-menu-logo {
+  background-color: #42a5f5;
+}
