@@ -7,10 +7,10 @@ import { HorizontalComponent } from './horizontal.component';
 @NgModule({
   declarations: [HorizontalComponent],
   imports: [
-
   ],
-  exports : [
+  exports: [
     HorizontalComponent
   ]
 })
 export class HorizontalModule { }
+

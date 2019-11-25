@@ -1,12 +1,16 @@
 <navbar></navbar>
 
-<div class="layout-menu-container">
+<div [@sideMenuAnime]="openClose" class="layout-menu-container">
   <div class="layout-menu-logo">
-    <a></a>
+    <a href="#">
+      <img _ngcontent-xee-c0="" id="layout-menu-logo" library="babylon-layout" src="assets/images/logos/sintad.png">
+    </a>
   </div>
   <div class="layout-menu-wrapper">
     <p-scrollPanel>
-        
+
+      <p-panelMenu [model]="items" [multiple]="false"></p-panelMenu>
+
     </p-scrollPanel>
   </div>
 </div>

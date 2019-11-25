@@ -3,11 +3,33 @@
   height: 100%;
   z-index: 999;
   background-color: #212121;
+
   @media (min-width: 897px) {
     left: 0;
     width: 250px;
   }
+
+  .layout-menu-logo {
+    background-color: #42a5f5;
+
+    a {
+      display: block;
+      text-align: center;
+      height: 60px;
+      img {
+        height: 56px;
+      }
+    }
+  }
+
+  .layout-static-inactive {
+    @media (min-width: 897px) {
+      left: -250px;
+    }
+  }
+
 }
+
 .layout-menu-wrapper {
   border-right: 1px solid #212121;
   position: relative;
@@ -18,8 +40,65 @@
 .layout-wrapper {
   position: fixed;
   height: 100%;
+  width: 100%;
   z-index: 999;
+  .layout-main{
+    padding-top: 60px;
+    @media (min-width: 897px) {
+      margin-left: 250px;
+    }
+  }
+
 }
-.layout-menu-logo {
-  background-color: #42a5f5;
+
+
+
+.ui-panelmenu-panel {
+  .ui-state-active {
+    a {
+      background-color: #373737 !important;
+      border: 1px solid #373737 !important;
+
+      span {
+        color: #42a5f5 !important;
+        background-color: #373737 !important;
+        border: 1px solid #373737 !important;
+      }
+    }
+
+
+  }
+
+  a {
+    color: #FFF !important;
+    border: 1px solid #212121 !important;
+    background-color: #212121 !important;
+    border-radius: 3 px;
+
+    &:hover {
+      background-color: #373737 !important;
+
+      span {
+        color: #42a5f5 !important;
+        background-color: unset !important;
+        border: unset !important;
+      }
+    }
+
+    &:focus {
+      outline: 0 none;
+    }
+  }
+
+  span {
+    color: #FFF !important;
+    border: 1px solid #212121 !important;
+    background-color: #212121 !important;
+  }
+
+  .ui-panelmenu-content {
+    border: 1px solid #212121 !important;
+    background-color: #212121 !important;
+  }
+
 }

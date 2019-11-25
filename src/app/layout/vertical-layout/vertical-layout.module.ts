@@ -4,8 +4,9 @@ import { NavbarModule } from '../components/navbar/navbar.module';
 import { ContentModule } from '../components/content/content.module';
 import { VerticalLayoutComponent } from './vertical-layout.component';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-
-
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { TabViewModule } from 'primeng/tabview'
+import { CodeHighlighterModule } from 'primeng/codehighlighter';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,10 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     ContentModule,
     NavbarModule,
     CommonModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    PanelMenuModule,
+    TabViewModule,
+    CodeHighlighterModule
   ],
   exports: [
     VerticalLayoutComponent

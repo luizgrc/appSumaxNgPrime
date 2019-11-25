@@ -6,9 +6,13 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import { LayoutModule } from './layout/layout.module';
+import { OrdenComponent } from './pages/orden/orden.component';
+import { RegistroComponent } from './pages/orden/registro/registro.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OrdenComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
