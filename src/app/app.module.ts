@@ -6,12 +6,13 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { LayoutModule } from './layout/layout.module';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
   {
     path: 'pages',
-    loadChildren: './pages/pages.module#PagesModule'
+    loadChildren : () => import('./pages/pages.module').then( m => m.PagesModule)
+    // loadChildren: './pages/pages.module#PagesModule'
   },
   {
     path: '**',
@@ -33,7 +34,10 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes ,
+      {
+        preloadingStrategy: PreloadAllModules
+      }),
 
     TableModule,
 
