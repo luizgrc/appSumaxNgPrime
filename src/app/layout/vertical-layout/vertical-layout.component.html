@@ -1,6 +1,5 @@
-<navbar></navbar>
-
-<div class="layout-menu-container">
+<navbar (onState)="toggleMenu($event)" ></navbar>
+<div [@slideInOut]="state" class="layout-menu-container">
   <div class="layout-menu-logo">
     <a href="#">
       <img _ngcontent-xee-c0="" id="layout-menu-logo" library="babylon-layout" src="assets/images/logos/sintad.png">
@@ -14,6 +13,6 @@
     </p-scrollPanel>
   </div>
 </div>
-<div class="layout-main">
+<div [@slideInOut2]="state" class="layout-main">
   <content></content>
 </div>
