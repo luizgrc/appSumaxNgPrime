@@ -1,1 +1,77 @@
-<p>registro works!</p>
+
+  <div class="container-registro">
+    <p-card [style]="{width: 'auto' , margin: 'auto'}" styleClass="ui-card-shadow">
+      <p-header>
+
+        <div class="card-header">
+          <div class="card-header-title">
+            <span>Gestion de Ordenes Operativas</span>
+          </div>
+          <div class="card-header-tittle-buttons">
+            <span>X</span>
+          </div>
+        </div>
+      </p-header>
+      <div class="card-body-header">
+        <label for="ordenAño">O.Transporte</label>
+        <span class="ui-float-label">
+          <input id="ordenAño" class="año" type="text" size="14" pInputText>
+          <label for="ordenAño">Año</label>
+        </span>
+        <span>/</span>
+        <span class="ui-float-label">
+          <input id="ordenDiv" class="div" type="text" size="14" pInputText>
+          <label for="ordenDiv">Div</label>
+        </span>
+        <span class="ui-float-label">
+          <input id="ordenNro" class="nro" type="text" size="14" pInputText>
+          <label for="ordenNro">Nro.</label>
+        </span>
+        <label for="aduanaAño">O.Aduana</label>
+        <span class="ui-float-label">
+          <input id="aduanaAño" class="año" type="text" size="14" pInputText>
+          <label for="aduanaAño">Año</label>
+        </span>
+        <span>/</span>
+        <span class="ui-float-label">
+          <input id="aduanaDiv" class="div" type="text" size="14" pInputText>
+          <label for="aduanaDiv">Div</label>
+        </span>
+        <span class="ui-float-label">
+          <input id="aduanaNro" class="nro" type="text" size="14" pInputText>
+          <label for="aduanaNro">Nro.</label>
+        </span>
+      </div>
+      <div class="card-body">
+        <div class="p-grid">
+          <p-fieldset class="p-col-6" legend="Remitente">
+            <div class="p-grid">
+              <div class="p-col-1">
+                <label for="codigoRemitente">Código</label>
+              </div>
+              <div class="p-col-2">
+                <span class="ui-float-label">
+                  <input id="codigoRemitente" type="text" size="14" pInputText>
+                  <label for="codigoRemitente">Cod</label>
+                </span>
+              </div>
+              <div class="p-col-9">
+                <span class=" ui-float-label">
+                  <input id="nombreRemitente" type="text" size="14" pInputText>
+                  <label for="nombreRemitente">Nombre</label>
+                </span>
+              </div>
+            </div>
+          </p-fieldset>
+          <p-fieldset class="p-col-6" legend="Destinatario">
+
+          </p-fieldset>
+        </div>
+
+      </div>
+      <p-footer>
+        <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"></button>
+        <button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
+      </p-footer>
+    </p-card>
+  </div>

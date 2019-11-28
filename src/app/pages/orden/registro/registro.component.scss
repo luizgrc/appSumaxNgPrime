@@ -1,0 +1,75 @@
+.container-registro {
+  font-size: 12px !important;
+  input {
+    height: 28px;
+    margin: 0 0.5px 0 0.5px;
+  }
+  .año {
+    width: 60px;
+  }
+  .div {
+    width: 30px;
+  }
+  .nro {
+    width: 65px;
+  }
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  width: 1620px;
+  @media (max-width: 1366px) {
+    width: 1024px !important;
+  }
+
+  display: block;
+  margin: auto;
+
+  .card-header {
+    padding: 1em 1em 0 1em;
+    * {
+      display: inline;
+    }
+    .card-header-title {
+      font-size: 1.17em;
+      font-weight: bold;
+    }
+    .card-header-tittle-buttons {
+      float: right;
+      cursor: pointer;
+    }
+  }
+
+  .card-body-header {
+    width: 100%;
+    * {
+      display: inline;
+    }
+    // & :not(:first-child):not(:last-child) {
+    //   margin: 0 1em 0 1em !important;
+    // }
+    // > :first-child {
+    //   margin: 0 1em 0 0;
+    // }
+    // > :last-child {
+    //   margin: 0 0 0 1em;
+    // }
+  }
+  .card-body {
+    p-fieldset {
+      padding: 0;
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  .p-col- {
+    &#{$i} {
+      input {
+        width: 100%;
+      }
+      label {
+        vertical-align: middle;
+      }
+    }
+  }
+}

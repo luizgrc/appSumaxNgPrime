@@ -6,9 +6,12 @@ import { OrdenComponent } from './orden.component';
 import { RegistroComponent } from './registro/registro.component';
 import { ListaOrdenComponent } from './lista-orden/lista-orden.component';
 import { TableModule } from 'primeng/table';
-import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { FieldsetModule } from 'primeng/fieldset';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,14 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     TableModule,
-    DropdownModule
+    DropdownModule,
+
+    // Registro
+    CardModule,
+    ButtonModule,
+    InputTextModule,
+    FieldsetModule,
+    ScrollPanelModule
   ],
   exports: [
   ]

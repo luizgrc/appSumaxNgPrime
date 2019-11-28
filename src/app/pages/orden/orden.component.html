@@ -1,11 +1,14 @@
-
 <div class="route-bar">
-    <div class="route-bar-breadcrumb">
-        <li><a href="#/"><i class="pi pi-home"></i></a></li>
-        <li>/</li>
-        <li class="ng-star-inserted"><a routerLink="/pages/orden/lista-orden" class="ng-star-inserted">Ordenes</a></li>
-    </div>
+  <div class="route-bar-breadcrumb">
+    <li><a href="#/"><i class="pi pi-home"></i></a></li>
+    <li>/</li>
+    <li class="ng-star-inserted"><a routerLink="/pages/orden/lista-orden" class="ng-star-inserted">Ordenes</a></li>
+    <li>/</li>
+    <li class="ng-star-inserted"><a routerLink="/pages/orden/registro" class="ng-star-inserted">Registro</a></li>
+  </div>
 </div>
-<div class="layout-content">
+<p-scrollPanel [style]="{width: '100%', height: '500px'}">
+  <div class="layout-content">
     <router-outlet *ngIf="true"></router-outlet>
-</div>
+  </div>
+</p-scrollPanel>

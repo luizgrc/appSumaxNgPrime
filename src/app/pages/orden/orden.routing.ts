@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListaOrdenComponent } from './lista-orden/lista-orden.component';
+import { RegistroComponent } from './registro/registro.component';
 
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo : 'lista-orden'
+    redirectTo: 'lista-orden'
   },
   {
     path: 'lista-orden',
-    component : ListaOrdenComponent
+    component: ListaOrdenComponent
+  },
+  {
+    path: 'registro',
+    component: RegistroComponent
   }
 ];
 
