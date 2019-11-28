@@ -1,5 +1,5 @@
-<navbar (onState)="toggleMenu($event)" ></navbar>
-<div [@slideInOut]="state" class="layout-menu-container">
+<navbar></navbar>
+<!-- <div [@slideInOut]="state" class="layout-menu-container">
   <div class="layout-menu-logo">
     <a href="#">
       <img _ngcontent-xee-c0="" id="layout-menu-logo" library="babylon-layout" src="assets/images/logos/sintad.png">
@@ -11,8 +11,211 @@
       <p-panelMenu [model]="items" [multiple]="false"></p-panelMenu>
 
     </p-scrollPanel>
+  </div> 
+</div>-->
+
+<nav id="sidebar" class="sidebar" [ngClass]="{'toggled' : getSideBarState()}">
+  <div class="sidebar-content">
+    <p-scrollPanel [style]="{width: '100%', height: '100%'}" styleClass="custom">
+      <div class="sidebar-header">
+        <!-- <a href="#">Menú Principal</a> -->
+        <a href="#">
+          <img src="assets/images/logos/sintad.png">
+        </a>
+      </div>
+
+      <div class="sidebar-profile">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="assets/images/usuario.png" alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">Luis
+            <strong>García</strong>
+          </span>
+          <span class="user-role">Administrador</span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>En Linea</span>
+          </span>
+        </div>
+      </div>
+      <div class="sidebar-search">
+        <div>
+          <div class="input-group">
+            <input type="text" class="form-control search-menu" placeholder="Buscar...">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-menu">
+        <ul>
+          <li *ngFor="let menu of menus"
+            [ngClass]="{'active': menu.active , 'sidebar-dropdown':menu.type === 'dropdown' , 'header-menu':menu.type === 'header'}">
+            <span *ngIf="menu.type === 'header'">{{menu.title}}</span>
+            <a style="cursor: pointer;" *ngIf="menu.type !== 'header'" (click)='toggle(menu)'>
+              <i class="{{menu.icon}}"></i>
+              <span>{{menu.title}}</span>
+              <span *ngIf="menu.badge" class="badge badge-pill" [ngClass]="menu.badge.class">{{menu.badge.text}}</span>
+            </a>
+            <div *ngIf="menu.type === 'dropdown'" class="sidebar-submenu" [@slide]="getState(menu)">
+              <ul>
+                <li *ngFor="let submenu of menu.submenus">
+                  <a style="cursor: pointer;"> {{submenu.title}}
+                    <span *ngIf="submenu.badge" class="badge badge-pill"
+                      [ngClass]="submenu.badge.class">{{submenu.badge.text}}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </p-scrollPanel>
   </div>
-</div>
-<div [@slideInOut2]="state" class="layout-main">
+  <div class="sidebar-footer">
+    <!-- NOTIFICACIONES -->
+    <div class="dropup">
+      <a style="cursor: pointer;" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-bell"></i>
+        <span class="badge badge-pill badge-warning notification">5</span>
+      </a>
+      <div class="dropdown-menu notifications">
+        <div class="notifications-header">
+          <i class="fa fa-bell"></i>
+          Notificaciones
+        </div>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">
+          <div class="notification-content">
+            <div class="icon">
+              <i class="fas fa-check text-success border border-success"></i>
+            </div>
+            <div class="content">
+              <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. In totam explicabo</div>
+              <div class="notification-time">
+                Hace 6 minutos
+              </div>
+            </div>
+          </div>
+        </a>
+        <a class="dropdown-item" href="#">
+          <div class="notification-content">
+            <div class="icon">
+              <i class="fas fa-exclamation text-info border border-info"></i>
+            </div>
+            <div class="content">
+              <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. In totam explicabo</div>
+              <div class="notification-time">
+                Hoy
+              </div>
+            </div>
+          </div>
+        </a>
+        <a class="dropdown-item" href="#">
+          <div class="notification-content">
+            <div class="icon">
+              <i class="fas fa-exclamation-triangle text-warning border border-warning"></i>
+            </div>
+            <div class="content">
+              <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. In totam explicabo</div>
+              <div class="notification-time">
+                Ayer
+              </div>
+            </div>
+          </div>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-center" href="#">Ver todas las notificaciones</a>
+      </div>
+    </div>
+    <!--/. NOTIFICACIONES -->
+
+    <div class="dropup" >
+      <a style="cursor: pointer;" class="dropdown-toggle"  data-toggle="dropdown">
+        <i class="fa fa-envelope"></i>
+        <span class="badge badge-pill badge-success notification">7</span>
+      </a>
+      <div class="dropdown-menu messages">
+        <div class="messages-header">
+          <i class="fa fa-envelope"></i>
+          Mensajes
+        </div>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">
+          <div class="message-content">
+            <div class="pic">
+              <img src="assets/images/usuario.png" alt="">
+            </div>
+            <div class="content">
+              <div class="message-title">
+                <strong> Jhon doe</strong>
+              </div>
+              <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. In totam explicabo</div>
+            </div>
+          </div>
+
+        </a>
+        <a class="dropdown-item" href="#">
+          <div class="message-content">
+            <div class="pic">
+              <img src="assets/images/usuario.png" alt="">
+            </div>
+            <div class="content">
+              <div class="message-title">
+                <strong> Jhon doe</strong>
+              </div>
+              <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. In totam explicabo</div>
+            </div>
+          </div>
+
+        </a>
+        <a class="dropdown-item" href="#">
+          <div class="message-content">
+            <div class="pic">
+              <img src="assets/images/usuario.png" alt="">
+            </div>
+            <div class="content">
+              <div class="message-title">
+                <strong> Jhon doe</strong>
+              </div>
+              <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. In totam explicabo</div>
+            </div>
+          </div>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-center" href="#">Ver todos los mensajes</a>
+
+      </div>
+    </div>
+    <div class="dropup">
+      <a style="cursor: pointer;" class="dropdown-toggle"  data-toggle="dropdown">
+        <i class="fa fa-cog"></i>
+        <span class="badge-sonar"></span>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Mi Perfil</a>
+        <a class="dropdown-item" href="#">Ayuda</a>
+        <a class="dropdown-item" href="#">Configuración</a>
+      </div>
+    </div>
+    <div>
+      <a href="#">
+        <i class="fa fa-power-off"></i>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="layout-main" [ngClass]="{'toggled' : getSideBarState()}">
   <content></content>
 </div>

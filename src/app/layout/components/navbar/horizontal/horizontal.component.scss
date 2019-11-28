@@ -6,7 +6,7 @@
   right: 0;
   z-index: 997;
   padding: 8px 25px;
-  background-color: #2196f3;
+  background-color: #D43834;
   -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -28,11 +28,13 @@
   -o-transition: background-color 0.3s;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
+  cursor: pointer;
   i {
     line-height: inherit;
     font-size: 28px;
+    color: white;
   }
   &:hover {
-    background-color: #64b5f6;
+    background-color: #dd5752;
   }
 }

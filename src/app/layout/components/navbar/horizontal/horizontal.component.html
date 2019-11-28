@@ -1,3 +1,3 @@
-<div [@slideInOut2]="state" class="layout-topbar">
-  <a (click)="$event.preventDefault();hideSidebar()" class="layout-menu-button" href=""><i class="pi pi-bars"></i></a>
+<div class="layout-topbar" [ngClass]="{'toggled' : getSideBarState()}">
+  <a (click)="hideSidebar()" class="layout-menu-button"><i class="pi pi-bars"></i></a>
 </div>
