@@ -1,14 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "custom_bootstrap";
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 body {
   .ui-widget {
-    @media (max-width: 1366px) {
-      font-size: 12px !important;
-    }
+    font-size: 12px !important;
+    // @media (max-width: 1366px) {
+    //   font-size: 12px !important;
+    // }
   }
 }
 .sidebar.toggled {

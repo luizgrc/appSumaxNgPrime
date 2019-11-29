@@ -63,7 +63,7 @@
     }
 
     legend {
-      background-color:transparent;
+      background-color: transparent;
       border-bottom: 1px solid #ddd;
       color: #666666;
       font-size: 14px;
@@ -71,12 +71,16 @@
       padding: 3px 5px 3px 7px;
       width: auto;
     }
+    .p-grid {
+      padding-top: 6.5px;
+    }
   }
 }
 
 @for $i from 1 through 12 {
   .p-col- {
     &#{$i} {
+      // padding : unset;
       input {
         width: 100%;
       }
