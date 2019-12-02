@@ -12,6 +12,10 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FieldsetModule } from 'primeng/fieldset';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import {InputMaskModule} from 'primeng/inputmask';
+import {CalendarModule} from 'primeng/calendar';
+import {CheckboxModule} from 'primeng/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +29,9 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     FormsModule,
     TableModule,
     DropdownModule,
+    InputMaskModule,
+    CalendarModule,
+    CheckboxModule,
 
     // Registro
     CardModule,
