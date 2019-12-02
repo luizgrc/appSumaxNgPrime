@@ -8,6 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { LayoutModule } from './layout/layout.module';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
+
 const appRoutes: Routes = [
   {
     path: 'pages',
