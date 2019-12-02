@@ -5,7 +5,7 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "src\\app\\layout/horizontal-layout": true
+        "src\\app\\layout/horizontal-layout": false
     },
     "explorerExclude.backup": null
 }

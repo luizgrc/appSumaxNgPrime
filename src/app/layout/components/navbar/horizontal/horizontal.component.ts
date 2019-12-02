@@ -18,7 +18,6 @@ export class HorizontalComponent implements OnInit {
     this.sidebarservice.setSidebarState(!this.sidebarservice.getSidebarState());
   }
   getSideBarState() {
-    console.log(this.sidebarservice.getSidebarState());
     return this.sidebarservice.getSidebarState();
   }
 }

@@ -11,7 +11,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 const appRoutes: Routes = [
   {
     path: 'pages',
-    loadChildren : () => import('./pages/pages.module').then( m => m.PagesModule)
+    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
     // loadChildren: './pages/pages.module#PagesModule'
   },
   {
@@ -34,7 +34,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes ,
+    RouterModule.forRoot(appRoutes,
       {
         preloadingStrategy: PreloadAllModules
       }),

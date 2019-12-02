@@ -1,27 +1,31 @@
+.route-bar {
+  min-height: 32px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+.route-bar-breadcrumb {
+  padding: 6px 25px;
+  display: inline-block;
 
-  .route-bar {
-    min-height: 32px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e8e8e8;
-  }
-
-  .route-bar-breadcrumb {
-    padding: 6px 25px;
+  li {
+    margin-right: 0.25em;
+    list-style-type: none;
     display: inline-block;
+    color: #727272;
 
-    li {
-      margin-right: 0.25em;
-      list-style-type: none;
-      display: inline-block;
+    a {
       color: #727272;
-
-      a {
-        color: #727272;
-      }
     }
   }
+}
 
-  .layout-content {
-    padding: 16px;
-  }
-
+.layout-content {
+  padding: 16px;
+  position: relative;
+  margin-top: 32px;
+  height: 100%;
+  // width: 99%;
+}

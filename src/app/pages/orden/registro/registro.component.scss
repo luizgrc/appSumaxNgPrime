@@ -1,7 +1,14 @@
+.draggable {
+  touch-action: none;
+  user-select: none;
+}
 .container-registro {
   font-size: 12px !important;
+  position: absolute;
+  top : 5%;
+  // left: 50%;
   input {
-    height: 28px;
+    height: 25px;
     margin: 0 0.5px 0 0.5px;
   }
   .año {
@@ -21,7 +28,7 @@
     width: 1024px !important;
   }
 
-  display: block;
+  // display: relative;
   margin: auto;
 
   .card-header {
@@ -55,6 +62,7 @@
     // }
   }
   .card-body {
+    padding: 0 1.25rem 0 1.25rem;
     p-fieldset {
       padding: 0;
     }
@@ -81,6 +89,7 @@
   .p-col- {
     &#{$i} {
       // padding : unset;
+      padding: 0 0 0 0.20rem;
       input {
         width: 100%;
       }

@@ -34,6 +34,9 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     ScrollPanelModule
   ],
   exports: [
+  ],
+  entryComponents: [
+    RegistroComponent
   ]
 })
 export class OrdenModule { }

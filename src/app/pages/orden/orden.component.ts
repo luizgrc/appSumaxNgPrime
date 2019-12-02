@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { SelectItem } from 'primeng/components/common/selectitem';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 
 
@@ -11,10 +13,18 @@ import { SelectItem } from 'primeng/components/common/selectitem';
 })
 export class OrdenComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    // private router: Router, public location: Location
+    ) { }
 
   ngOnInit() {
 
   }
+  // refresh() {
+  //   this.router.navigateByUrl('/registro', { skipLocationChange: true }).then(() => {
+  //     console.log(decodeURI(this.location.path()));
+  //     this.router.navigate([decodeURI(this.location.path())]);
+  //   });
 
+  // }
 }
