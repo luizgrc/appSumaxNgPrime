@@ -5,13 +5,11 @@
 ::ng-deep .container-registro {
   font-size: 12px !important;
   position: absolute;
-  top: 5%;
-  left: 5%;
-  // width: 1620px;
-  // display: relative;
-  // margin: auto;
-  width: 1620px;
+  top : 5%;
   z-index: 2;
+  left: 5%;
+  width: 1620px;
+
   input {
     height: 25px;
     margin: 0 0.5px 0 0.5px;
