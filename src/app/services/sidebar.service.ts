@@ -54,14 +54,19 @@ export class SidebarService {
           badge: {
             text: 'Nuevo ',
             class: 'badge-warning'
-          }
+          },
+          link: ['/pages/orden/lista-orden']
         },
         {
           title: 'Registro',
           badge: {
             text: 'Nuevo ',
             class: 'badge-warning'
-          }
+          },
+          // link : 'pages/orden/(registro:open)'
+          link: ['/pages/orden', {
+            outlets: { registro: 'open' }
+          }]
         },
         {
           title: 'Reporte',

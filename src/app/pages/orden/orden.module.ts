@@ -15,13 +15,15 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import {InputMaskModule} from 'primeng/inputmask';
 import {CalendarModule} from 'primeng/calendar';
 import {CheckboxModule} from 'primeng/checkbox';
+import { ReporteComponent } from './reporte/reporte.component';
 
 
 @NgModule({
   declarations: [
     OrdenComponent,
     RegistroComponent,
-    ListaOrdenComponent
+    ListaOrdenComponent,
+    ReporteComponent
   ],
   imports: [
     OrdenRoutingModule,

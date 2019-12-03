@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { element } from 'protractor';
 
 
 
@@ -11,14 +12,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./orden.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class OrdenComponent implements OnInit {
-
+export class OrdenComponent implements OnInit, OnDestroy {
+  showComponent = true;
+  mySubscription: any;
   constructor(
-    // private router: Router, public location: Location
-    ) { }
+    private router: Router, public location: Location
+  ) { }
 
   ngOnInit() {
 
+  }
+  public refresh(e: any) {
+    console.log(e);  
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
+    this.mySubscription = this.router.events.subscribe((event) => {
+
+      // console.log(event);
+      if (event instanceof NavigationEnd) {
+        // console.log(event);
+        // Trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+      }
+    });
+    // this.showComponent = false;
+    // setTimeout(x => this.showComponent = true);
+  }
+  ngOnDestroy() {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
   }
   // refresh() {
   //   this.router.navigateByUrl('/registro', { skipLocationChange: true }).then(() => {

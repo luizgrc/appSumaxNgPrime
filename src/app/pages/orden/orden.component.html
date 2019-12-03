@@ -2,15 +2,25 @@
   <div class="route-bar-breadcrumb">
     <li><a href="#/"><i class="pi pi-home"></i></a></li>
     <li>/</li>
-    <li class="ng-star-inserted"><a routerLink="./lista-orden" class="ng-star-inserted">Ordenes</a></li>
+    <li class="ng-star-inserted">
+      <a routerLink="./lista-orden" class="ng-star-inserted">Ordenes</a>
+    </li>
     <li>/</li>
-    <li class="ng-star-inserted"><a  [routerLink]="[{ outlets: { registro : 'open'}}]"
-        class="ng-star-inserted">Registro</a></li>
+    <li class="ng-star-inserted">
+      <a (click)="refresh($event)" [routerLink]="[{ outlets: { registro : 'open'}}]"
+        class="ng-star-inserted">Registro</a>
+    </li>
+    <li>/</li>
+    <li>
+      <a (click)="refresh($event)" [routerLink]="[{ outlets: { reporte : 'open'}}]"
+        class="ng-star-inserted">Reporte</a>
+    </li>
   </div>
 </div>
 <div id="content" class="layout-content">
   <p-scrollPanel [style]="{width: '100%', height: '800px'}">
     <router-outlet></router-outlet>
     <router-outlet name="registro"></router-outlet>
+    <router-outlet name="reporte"></router-outlet>
   </p-scrollPanel>
 </div>
