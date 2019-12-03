@@ -2,12 +2,14 @@
   touch-action: none;
   user-select: none;
 }
-.container-registro {
+::ng-deep .container-registro {
   font-size: 12px !important;
   position: absolute;
   top : 5%;
   z-index: 2;
-  // left: 50%;
+  left: 5%;
+  width: 1620px;
+
   input {
     height: 25px;
     margin: 0 0.5px 0 0.5px;
@@ -24,13 +26,10 @@
   //   display: flex;
   //   align-items: center;
   //   justify-content: center;
-  width: 1620px;
+
   @media (max-width: 1366px) {
     width: 1024px !important;
   }
-
-  // display: relative;
-  margin: auto;
 
   .card-header {
     padding: 1em 1em 0 1em;
@@ -90,7 +89,7 @@
   .p-col- {
     &#{$i} {
       // padding : unset;
-      padding: 0 0 0 0.20rem;
+      padding: 0 0 0 0.2rem;
       input {
         width: 100%;
       }

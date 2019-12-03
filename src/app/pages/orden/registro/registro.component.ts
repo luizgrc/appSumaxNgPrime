@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, OnDestroy, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy, OnChanges, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent implements OnInit, OnDestroy, OnChanges {
-  constructor(private activatedRouter: ActivatedRoute, private router: Router) { }
+  constructor(public render: Renderer2, private activatedRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     const interact = require('interactjs');
@@ -15,7 +15,9 @@ export class RegistroComponent implements OnInit, OnDestroy, OnChanges {
     interact('.draggable').draggable({
       listeners: {
         start(event) {
-          // console.log(event.type, event.target);
+          // console.log(event.target);
+          event.target.style.border = '1px solid #262626';
+          event.target.style.zIndex = 2;
         },
         move(event) {
           position.x += event.dx;
@@ -24,40 +26,20 @@ export class RegistroComponent implements OnInit, OnDestroy, OnChanges {
           event.target.style.transform =
             `translate(${position.x}px, ${position.y}px)`;
         },
-      }
+        end(event) {
+          // console.log(event.target);
+          event.target.style.border = '';
+        }
+      },
+      modifiers: [
+        interact.modifiers.restrict({
+          restriction: '#content',
+          elementRect: { top: 0, right: 0, bottom: 0, left: 0 },
+        })
+      ]
     });
   }
 
-  calculateRestriction(x: any, y: any, element: any) {
-    console.log(x, y, element);
-    return {
-      top: 20,
-      left: 0,
-      right: 0,
-      bottom: 10
-
-    };
-
-
-  }
-  getElementRect() {
-
-  }
-  // dragMoveListener(event) {
-  //   var target = event.target
-  //   // keep the dragged position in the data-x/data-y attributes
-  //   var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-  //   var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
-
-  //   // translate the element
-  //   target.style.webkitTransform =
-  //     target.style.transform =
-  //     'translate(' + x + 'px, ' + y + 'px)'
-
-  //   // update the posiion attributes
-  //   target.setAttribute('data-x', x)
-  //   target.setAttribute('data-y', y)
-  // }
   closeViaParent() {
     this.router.navigate(
       [
