@@ -4,8 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'registro',
   templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent implements OnInit, OnDestroy, OnChanges {
   constructor(private activatedRouter: ActivatedRoute, private router: Router) { }
