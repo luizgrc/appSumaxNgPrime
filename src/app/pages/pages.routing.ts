@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OrdenComponent } from './orden/orden.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -11,8 +12,12 @@ const routes: Routes = [
     loadChildren: () => import('./orden/orden.module').then(m => m.OrdenModule)
   },
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: '',
-    redirectTo: 'orden'
+    redirectTo: 'login'
   }
 ];
 
