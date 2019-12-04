@@ -1,0 +1,41 @@
+.ui-g-1,
+.ui-md-1,
+.ui-lg-1 {
+  button {
+    width: 100px;
+    margin-top: 17px;
+    height: 30px;
+  }
+}
+
+::ng-deep .prueba {
+  width: 100% !important;
+  height: 30px !important;
+  margin: 0 0.5px 0 0.5px;
+  label {
+    height: 28px;
+  }
+}
+
+.ui-inputgroup {
+  width: 100%;
+  height: 30px !important;
+  margin: 0 0.5px 0 0.5px;
+}
+
+::ng-deep .container-reporte {
+  font-size: 12px !important;
+  position: absolute;
+  top : 5%;
+  z-index: 3;
+  left: 5%;
+  width: 1620px;
+  //sirve para dispositivos tactiles
+  touch-action: none;
+  //user select la malogra aunque no sabemos que hace
+  //user-select: none;
+  
+  
+}
+
+

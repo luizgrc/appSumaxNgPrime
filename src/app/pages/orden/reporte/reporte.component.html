@@ -1,17 +1,64 @@
-<p-card styleClass="ui-card-shadow">
-  <p-header>
-    <div class="card-header">
-      <div class="card-header-title">
-        <span>Seguimiento de Ordenes Operativas de Transporte</span>
+<div class="draggable-reporte container-reporte ">
+
+  <p-card styleClass=" ui-card-shadow">
+    <p-header>
+      <div class="card-header">
+        <div class="card-header-title">
+          <span>Reportes Transporte</span>
+        </div>
+      </div>
+    </p-header>
+    <div class="card-body-header">
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+          <span>Clientes</span>
+          <p-dropdown styleClass="prueba" [options]="clientes" [(ngModel)]="selectCl" placeholder="Todos"
+            optionLabel="nombre" [showClear]="true"></p-dropdown>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+          <span>Filtrado por:</span>
+          <p-dropdown styleClass="prueba" [options]="filtros" [(ngModel)]="selectTr" optionLabel="nombrefiltro"
+            [showClear]="true"></p-dropdown>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+          <span>Estado de la Orden</span>
+          <p-dropdown styleClass="prueba" [options]="estados" [(ngModel)]="selectEo" placeholder="Todos"
+            optionLabel="nombreestado" [showClear]="true"></p-dropdown>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+          <span>Tipo de Fecha</span>
+          <p-dropdown styleClass="prueba" [options]="tfechas" [(ngModel)]="selectTf" optionLabel="nombretfecha"
+            [showClear]="true"></p-dropdown>
+        </div>
+      </div>
+      <div class="ui-g ui-fluid">
+
+
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+          <span>Fecha Desde</span>
+          <p-calendar styleClass="prueba" [(ngModel)]="fechaD" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+          <span>Fecha Hasta</span>
+          <p-calendar styleClass="prueba" [(ngModel)]="fechaH" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+        </div>
+        <div class="ui-g-1 ui-md-1 ui-lg-3">
+          <button pButton type="button" label="Consultar" icon="pi pi-search"></button>
+        </div>
       </div>
     </div>
-  </p-header>
-  <div class="card-body-header">
-  </div>
-  <div class="card-body">
-    <div>
-      <canvas id="canvas">{{ chart }}</canvas>
+    <div class="card-body">
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-12 ui-lg-6">
+          <canvas id="canvas">{{ chart }}</canvas>
+        </div>
+        <div class="ui-g-12 ui-md-12 ui-lg-6">
+          <canvas id="canvaspie">{{ chart2 }}</canvas>
+        </div>
+      </div>
+
     </div>
-  </div>
-  <p-footer></p-footer>
-</p-card>
+    <p-footer></p-footer>
+  </p-card>
+
+</div>
