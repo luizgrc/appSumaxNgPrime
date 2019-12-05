@@ -10,4 +10,5 @@ export class Clientes {
         this.ruc = ruc;
 
     }
+    
 }
