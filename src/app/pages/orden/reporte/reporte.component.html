@@ -20,7 +20,7 @@
         </div>
         <div class="ui-g-12 ui-md-6 ui-lg-3">
           <span>Filtrado por:</span>
-          <p-dropdown styleClass="prueba" [options]="filtros" [(ngModel)]="selectTr" optionLabel="nombrefiltro"
+          <p-dropdown styleClass="prueba" [options]="filtros" [(ngModel)]="selectFl" optionLabel="nombrefiltro" placeholder="Seleccionar"
             [showClear]="true"></p-dropdown>
         </div>
         <div class="ui-g-12 ui-md-6 ui-lg-3">
@@ -46,18 +46,19 @@
           <p-calendar styleClass="prueba" [(ngModel)]="fechaH" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
         </div>
         <div class="ui-g-1 ui-md-1 ui-lg-3">
-          <button pButton type="button" label="Consultar" icon="pi pi-search"></button>
+          <button pButton type="button" label="Consultar" (click)="consultarreporte()" icon="pi pi-search"></button>
         </div>
       </div>
     </div>
     <div class="card-body">
       <div class="ui-g ui-fluid">
         <div class="ui-g-12 ui-md-12 ui-lg-6">
-          <canvas id="canvas">{{ chart }}</canvas>
-        </div>
-        <div class="ui-g-12 ui-md-12 ui-lg-6">
           <canvas id="canvaspie">{{ chart2 }}</canvas>
         </div>
+        <div class="ui-g-12 ui-md-12 ui-lg-6">
+          <canvas id="canvas">{{ chart }}</canvas>
+        </div>
+        
       </div>
 
     </div>
