@@ -7,6 +7,20 @@
     height: 30px;
   }
 }
+.card-header {
+  padding: 1em 1em 0 1em;
+  * {
+    display: inline;
+  }
+  .card-header-title {
+    font-size: 1.17em;
+    font-weight: bold;
+  }
+  .card-header-tittle-buttons {
+    float: right;
+    cursor: pointer;
+  }
+}
 
 ::ng-deep .prueba {
   width: 100% !important;
@@ -26,7 +40,7 @@
 ::ng-deep .container-reporte {
   font-size: 12px !important;
   position: absolute;
-  top : 5%;
+  top: 5%;
   z-index: 3;
   left: 5%;
   width: 1620px;
@@ -34,8 +48,4 @@
   touch-action: none;
   //user select la malogra aunque no sabemos que hace
   //user-select: none;
-  
-  
 }
-
-

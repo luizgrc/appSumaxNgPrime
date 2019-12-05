@@ -15,7 +15,6 @@ export class RegistroComponent implements OnInit, OnDestroy, OnChanges {
     interact('.draggable').draggable({
       listeners: {
         start(event) {
-          // console.log(event.target);
           event.target.style.border = '1px solid #262626';
           event.target.style.zIndex = 2;
         },
@@ -27,7 +26,6 @@ export class RegistroComponent implements OnInit, OnDestroy, OnChanges {
             `translate(${position.x}px, ${position.y}px)`;
         },
         end(event) {
-          // console.log(event.target);
           event.target.style.border = '';
         }
       },

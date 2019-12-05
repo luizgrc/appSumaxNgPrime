@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { LayoutModule } from './layout/layout.module';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { LoginComponent } from './pages/login/login.component';
 
 
 const appRoutes: Routes = [
@@ -16,8 +17,12 @@ const appRoutes: Routes = [
     // loadChildren: './pages/pages.module#PagesModule'
   },
   {
+    path: 'login',
+    component : LoginComponent
+  },
+  {
     path: '**',
-    redirectTo: '/pages/orden'
+    redirectTo: '/login'
   }
   // {
   //   path: 'pages',
@@ -30,7 +35,8 @@ const appRoutes: Routes = [
 ];
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -23,14 +23,10 @@ export class OrdenComponent implements OnInit, OnDestroy {
 
   }
   public refresh(e: any) {
-    console.log(e);  
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.mySubscription = this.router.events.subscribe((event) => {
-
-      // console.log(event);
       if (event instanceof NavigationEnd) {
-        // console.log(event);
         // Trick the Router into believing it's last link wasn't previously loaded
         this.router.navigated = false;
       }
@@ -45,7 +41,6 @@ export class OrdenComponent implements OnInit, OnDestroy {
   }
   // refresh() {
   //   this.router.navigateByUrl('/registro', { skipLocationChange: true }).then(() => {
-  //     console.log(decodeURI(this.location.path()));
   //     this.router.navigate([decodeURI(this.location.path())]);
   //   });
 
