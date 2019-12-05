@@ -29,11 +29,13 @@
   top : 5%;
   z-index: 3;
   left: 5%;
-  width: 1620px;
+  width: 80%;
+  
+  //PONER TOUCH-ACTION Y USER-SELECT en AUTO para que los reportes no se salgan de su div 
   //sirve para dispositivos tactiles
-  touch-action: none;
-  //user select la malogra aunque no sabemos que hace
-  //user-select: none;
+  touch-action: auto;
+  //sirve para que no puedas seleccionar el texto de una pantalla
+  user-select: auto;
   
   
 }

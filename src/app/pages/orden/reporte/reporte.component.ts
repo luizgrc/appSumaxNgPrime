@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, Inject } from '@angular/core'
 import { Chart } from 'chart.js';
 import { Clientes } from 'app/model/Clientes';
 import { DOCUMENT } from '@angular/common';
+import { ClientesService } from 'app/services/clientes.service';
 
 @Component({
   selector: 'reporte',
@@ -17,9 +18,14 @@ export class ReporteComponent implements OnInit {
   tfechas;
   fechaD;
   fechaH;
-  progress :HTMLElement;
-  //@ViewChild("animationProgress" , {static : false}) animationProgress: ElementRef;
-  constructor(@Inject(DOCUMENT) document) {
+  tipoenvio;
+  selectFl;
+
+  cantidadco;
+  cantidadca;
+
+  
+  constructor(private clientesService : ClientesService) {
    }
   ngOnInit() {
     const interact = require('interactjs');
@@ -27,7 +33,6 @@ export class ReporteComponent implements OnInit {
     interact('.draggable-reporte').draggable({
       listeners: {
         start(event) {
-          // console.log(event.target);
           event.target.style.border = '1px solid #262626';
           event.target.style.zIndex = 2;
         },
@@ -39,7 +44,6 @@ export class ReporteComponent implements OnInit {
             `translate(${position.x}px, ${position.y}px)`;
         },
         end(event) {
-          // console.log(event.target);
           event.target.style.border = '';
         }
       },
@@ -55,59 +59,19 @@ export class ReporteComponent implements OnInit {
     this.llenarcombos();
     this.canvasline();
     this.canvaspie();
-    
-
-       
-
-      //  var progress = this.animationProgress;
-      //this.progress = document.getElementById("animationProgress") as HTMLElement;
-       
-     
+    this.llenardatafalsa();     
   }
 
   canvaspie(){
     this.chart2 = new Chart('canvaspie', {
       type: 'pie',
       data: {
-        labels: ['Contenedor', 'Carga Suelta'],
+        labels: [],
         datasets: [
           {
             label: 'Cantidad',
-            data: [451, 86],
+            data: [],
             //fill: false,
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor:[
-             'rgba(255, 99, 132, 1)',
-             'rgba(54, 162, 235, 1)',
-             'rgba(255, 206, 86, 1)',
-             'rgba(75, 192, 192, 1)',
-             'rgba(153, 102, 255, 1)',
-             'rgba(255, 159, 64, 1)'
-           ],
-           borderWidth:1
-          }
-        ]
-      }
-    });
-  }
-
-  canvasline(){
-    this.chart = new Chart('canvas', {
-      type: 'line',
-      data: {
-        labels:  ['Red', 'Blue', 'Yellow', 'Green','Green', 'Purple', 'Orange','Orange'],
-        datasets: [
-          {
-            label: 'Cantidad',
-            data: [12, 19, 1, 5, 4, 3,5,8],
-            fill: false,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -130,29 +94,220 @@ export class ReporteComponent implements OnInit {
       },
       options: {
         legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            display: true
-          }],
-          yAxes: [{
-            display: true
-          }],
+          display: true,
+          position: 'bottom'
         }
       }
+
+    });
+  }
+
+  canvasline(){
+    this.chart = new Chart('canvas', {
+      type: 'line',
+      data: {
+        datasets: [
+          {
+            label: 'Contenedor',
+            data: [],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor:'rgba(255, 99, 132, 1)',
+            fill: false,
+            borderWidth:1
+          },
+          {
+            label: 'Carga Suelta',
+            data: [],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor:'rgba(54, 162, 235, 1)',
+            fill: false,
+            borderWidth:1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+          title:{
+            display:true,
+            text:"Reporte lineal"
+          },
+        scales: {
+          xAxes: [{
+            type: "time",
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Fecha'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Cantidad'
+            }
+          }]
+        }
+      }  
     });
   }
 
   calcular_fechas_mensuales(){
-    //console.log(1+"/"+(Number(new Date().getMonth())+1).toString()+"/"+new Date().getFullYear());
-    var date = new Date()
-    var primerDia = new Date(date.getFullYear(), date.getMonth(), 1);
-    var ultimoDia = new Date(date.getFullYear(), date.getMonth()+1, 0);
+    let date = new Date()
+    let primerDia = new Date(date.getFullYear(), date.getMonth(), 1);
+    let ultimoDia = new Date(date.getFullYear(), date.getMonth()+1, 0);
 
-//    var u =(ultimoDia.getDate().toString()+"/"+(Number(ultimoDia.getMonth())+1).toString()+"/"+ultimoDia.getFullYear().toString());
     this.fechaD = primerDia;
     this.fechaH = ultimoDia;
+  }
+
+  consultarreporte(){
+
+    if(this.selectFl.id == "1"){
+      let desde = Date.parse(this.fechaD);
+      let hasta   = Date.parse(this.fechaH);
+      let arraycontenedor =[];
+      let arraycargas =[];
+      let cantidadcontenedor = 0;
+      let cantidadcargas = 0;
+
+      for (let i = 0; i < this.tipoenvio.length; i++) {
+        let fecha = Date.parse(this.tipoenvio[i]["fecha"]);
+        if((fecha <= hasta && fecha >= desde)){
+          //console.log(this.tipoenvio[i]["fecha"]);
+          let tipo = this.tipoenvio[i]["tipo"];
+          if(tipo== "contenedor"){
+            cantidadcontenedor = cantidadcontenedor + Number(this.tipoenvio[i]["cantidad"]);
+
+            arraycontenedor.push({x: this.tipoenvio[i]["fecha"],y: this.tipoenvio[i]["cantidad"]});
+          }else{
+            cantidadcargas = cantidadcargas + Number(this.tipoenvio[i]["cantidad"]);
+            arraycargas.push({x: this.tipoenvio[i]["fecha"],y: this.tipoenvio[i]["cantidad"]});
+          }  
+        }
+      }
+      this.cantidadca=cantidadcargas;
+      this.cantidadco=cantidadcontenedor;  
+      
+      this.chart2.data.labels=[];      
+      this.chart2.data.datasets[0].data=[];
+    
+      this.addData(this.chart2,'Contenedor',cantidadcontenedor);
+      this.addData(this.chart2,'Carga Suelta',cantidadcargas);
+
+      //let arraycargas =[ {x:'12/12/12',y:'50'},{x:'12/12/13',y:'60'},{x:'12/12/14',y:'55'} ];
+      //console.log(this.chart.data.datasets[0]['data']);
+
+      console.log(arraycontenedor);
+      console.log(arraycargas);
+
+      this.chart.data.datasets[0]['data'] = arraycontenedor;
+      this.chart.data.datasets[1]['data'] = arraycargas;
+      this.chart.update();
+
+       //let arraycontenedor =[];
+      //this.addDataline(this.chart,arraycontenedor);
+      //this.addDataline(this.chart,arraycargas);
+    }
+    
+  }
+
+  addDataline(chart, data) {
+    //chart.data.datasets.forEach((dataset) => {
+    chart.data.dataset[1]['data']=data;
+    //});
+    chart.update();
+  }
+
+  addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+  }
+
+  removeData(chart) {
+    chart.data.labels.pop();
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.pop();
+    });
+    chart.update();
+  }
+
+  llenardatafalsa(){
+    this.tipoenvio = [
+      {id:'1',tipo:'contenedor',cantidad:'10',fecha:'12/01/2019'},
+      {id:'2',tipo:'contenedor',cantidad:'20',fecha:'12/02/2019'},
+      {id:'3',tipo:'contenedor',cantidad:'30',fecha:'12/03/2019'},
+      {id:'4',tipo:'contenedor',cantidad:'40',fecha:'12/04/2019'},
+      {id:'5',tipo:'contenedor',cantidad:'50',fecha:'12/05/2019'},
+      {id:'6',tipo:'contenedor',cantidad:'25',fecha:'11/01/2019'},
+      {id:'7',tipo:'contenedor',cantidad:'30',fecha:'11/02/2019'},
+      {id:'8',tipo:'contenedor',cantidad:'12',fecha:'11/03/2019'},
+      {id:'9',tipo:'contenedor',cantidad:'56',fecha:'11/04/2019'},
+      {id:'10',tipo:'contenedor',cantidad:'41',fecha:'11/05/2019'},
+      {id:'11',tipo:'contenedor',cantidad:'56',fecha:'11/06/2019'},
+      {id:'12',tipo:'contenedor',cantidad:'58',fecha:'11/07/2019'},
+      {id:'13',tipo:'contenedor',cantidad:'82',fecha:'11/08/2019'},
+      {id:'14',tipo:'contenedor',cantidad:'89',fecha:'11/09/2019'},
+      {id:'15',tipo:'contenedor',cantidad:'56',fecha:'11/10/2019'},
+      {id:'16',tipo:'contenedor',cantidad:'98',fecha:'11/11/2019'},
+      {id:'17',tipo:'contenedor',cantidad:'58',fecha:'11/12/2019'},
+      {id:'18',tipo:'contenedor',cantidad:'84',fecha:'11/13/2019'},
+      {id:'19',tipo:'contenedor',cantidad:'50',fecha:'11/14/2019'},
+      {id:'20',tipo:'contenedor',cantidad:'19',fecha:'11/15/2019'},
+      {id:'22',tipo:'contenedor',cantidad:'30',fecha:'11/16/2019'},
+      {id:'23',tipo:'contenedor',cantidad:'12',fecha:'11/17/2019'},
+      {id:'24',tipo:'contenedor',cantidad:'56',fecha:'11/18/2019'},
+      {id:'25',tipo:'contenedor',cantidad:'41',fecha:'11/19/2019'},
+      {id:'26',tipo:'contenedor',cantidad:'56',fecha:'11/20/2019'},
+      {id:'27',tipo:'contenedor',cantidad:'58',fecha:'11/21/2019'},
+      {id:'28',tipo:'contenedor',cantidad:'82',fecha:'11/22/2019'},
+      {id:'29',tipo:'contenedor',cantidad:'89',fecha:'11/23/2019'},
+      {id:'30',tipo:'contenedor',cantidad:'56',fecha:'11/24/2019'},
+      {id:'31',tipo:'contenedor',cantidad:'98',fecha:'11/25/2019'},
+      {id:'32',tipo:'contenedor',cantidad:'58',fecha:'11/26/2019'},
+      {id:'33',tipo:'contenedor',cantidad:'84',fecha:'11/27/2019'},
+      {id:'34',tipo:'contenedor',cantidad:'50',fecha:'11/28/2019'},
+      {id:'35',tipo:'contenedor',cantidad:'19',fecha:'11/29/2019'},
+      {id:'36',tipo:'contenedor',cantidad:'58',fecha:'11/30/2019'},
+      {id:'37',tipo:'cargasuelta',cantidad:'11',fecha:'12/01/2019'},
+      {id:'38',tipo:'cargasuelta',cantidad:'12',fecha:'12/02/2019'},
+      {id:'39',tipo:'cargasuelta',cantidad:'13',fecha:'12/03/2019'},
+      {id:'40',tipo:'cargasuelta',cantidad:'14',fecha:'12/04/2019'},
+      {id:'41',tipo:'cargasuelta',cantidad:'15',fecha:'12/05/2019'},
+      {id:'42',tipo:'cargasuelta',cantidad:'12',fecha:'11/01/2019'},
+      {id:'43',tipo:'cargasuelta',cantidad:'13',fecha:'11/02/2019'},
+      {id:'44',tipo:'cargasuelta',cantidad:'11',fecha:'11/03/2019'},
+      {id:'45',tipo:'cargasuelta',cantidad:'15',fecha:'11/04/2019'},
+      {id:'46',tipo:'cargasuelta',cantidad:'14',fecha:'11/05/2019'},
+      {id:'47',tipo:'cargasuelta',cantidad:'15',fecha:'11/06/2019'},
+      {id:'48',tipo:'cargasuelta',cantidad:'15',fecha:'11/07/2019'},
+      {id:'49',tipo:'cargasuelta',cantidad:'18',fecha:'11/08/2019'},
+      {id:'50',tipo:'cargasuelta',cantidad:'18',fecha:'11/09/2019'},
+      {id:'51',tipo:'cargasuelta',cantidad:'15',fecha:'11/10/2019'},
+      {id:'52',tipo:'cargasuelta',cantidad:'19',fecha:'11/11/2019'},
+      {id:'53',tipo:'cargasuelta',cantidad:'15',fecha:'11/12/2019'},
+      {id:'54',tipo:'cargasuelta',cantidad:'18',fecha:'11/13/2019'},
+      {id:'55',tipo:'cargasuelta',cantidad:'15',fecha:'11/14/2019'},
+      {id:'56',tipo:'cargasuelta',cantidad:'11',fecha:'11/15/2019'},
+      {id:'58',tipo:'cargasuelta',cantidad:'13',fecha:'11/16/2019'},
+      {id:'59',tipo:'cargasuelta',cantidad:'11',fecha:'11/17/2019'},
+      {id:'60',tipo:'cargasuelta',cantidad:'15',fecha:'11/18/2019'},
+      {id:'61',tipo:'cargasuelta',cantidad:'14',fecha:'11/19/2019'},
+      {id:'62',tipo:'cargasuelta',cantidad:'15',fecha:'11/20/2019'},
+      {id:'63',tipo:'cargasuelta',cantidad:'15',fecha:'11/21/2019'},
+      {id:'64',tipo:'cargasuelta',cantidad:'18',fecha:'11/22/2019'},
+      {id:'65',tipo:'cargasuelta',cantidad:'18',fecha:'11/23/2019'},
+      {id:'66',tipo:'cargasuelta',cantidad:'15',fecha:'11/24/2019'},
+      {id:'67',tipo:'cargasuelta',cantidad:'19',fecha:'11/25/2019'},
+      {id:'68',tipo:'cargasuelta',cantidad:'15',fecha:'11/26/2019'},
+      {id:'69',tipo:'cargasuelta',cantidad:'18',fecha:'11/27/2019'},
+      {id:'70',tipo:'cargasuelta',cantidad:'15',fecha:'11/28/2019'},
+      {id:'71',tipo:'cargasuelta',cantidad:'11',fecha:'11/29/2019'},
+      {id:'72',tipo:'cargasuelta',cantidad:'15',fecha:'11/30/2019'}
+    ];
   }
 
   llenarcombos(){
@@ -186,42 +341,7 @@ export class ReporteComponent implements OnInit {
       {id:'7', nombrefiltro: 'Conductores' },
       {id:'8', nombrefiltro: 'Vehiculos' }
     ];
-    this.clientes = [
-      {id:'1', nombre: 'SCHARFF LOGISTICA INTEGRADA', id_control: '1', ruc: '12345678912'},
-      {id:'2', nombre: 'ADM ADUANAS S.A.C.', id_control: '2', ruc: '12345678912'},
-      {id:'3', nombre: 'AXIS GROUP', id_control: '3', ruc: '12345678912'},
-      {id:'4', nombre: 'IPH AGENCIA DE ADUANA E.I.R.L.', id_control: '4', ruc: '12345678912'},
-      {id:'5', nombre: 'IPH AGENCIA DE CARGA S.A.C.', id_control: '5', ruc: '12345678912'},
-      {id:'6', nombre: 'TRAIN PERU S.A.C.', id_control: '6', ruc: '12345678912'},
-      {id:'7', nombre: 'ASIADUANAS S.A.', id_control: '7', ruc: '12345678912'},
-      {id:'8', nombre: 'CLP Operador Logístico', id_control: '8', ruc: '12345678912'},
-      {id:'9', nombre: 'UCL Operadores', id_control: '9', ruc: '12345678912'},
-      {id:'10', nombre: 'JAIME RAMIREZ MC CUBBIN S C R LTDA', id_control: '10', ruc: '12345678912'},
-      {id:'11', nombre: 'TRANSMODAL LOGISTICS PERU S.A.C.', id_control: '11', ruc: '12345678912'},
-      {id:'12', nombre: 'JG ADUANAS LOGISTIC S.A.C.', id_control: '12', ruc: '12345678912'},
-      {id:'13', nombre: 'PACIFICO DESPACHOS S.A.C.', id_control: '13', ruc: '12345678912'},
-      {id:'14', nombre: 'CAP LOGISTIC', id_control: '14', ruc: '12345678912'},
-      {id:'15', nombre: 'CONCRETEC LOGISTIC S.A.C.', id_control: '15', ruc: '12345678912'},
-      {id:'16', nombre: 'CHOICE ADUANAS S.A.C.', id_control: '16', ruc: '12345678912'},
-      {id:'17', nombre: 'DEPISA S.A.', id_control: '17', ruc: '12345678912'},
-      {id:'18', nombre: 'L.B. GAYOSO S.A.C.', id_control: '18', ruc: '12345678912'},
-      {id:'19', nombre: 'AVM ADUANERA S.A.C.', id_control: '19', ruc: '12345678912'},
-      {id:'20', nombre: 'LA ESMERALDA AGENCIA DE ADUANA S.R.L.', id_control: '20', ruc: '12345678912'},
-      {id:'21', nombre: 'CORPORACION CAVELTY LOGISTICS S.A.C.', id_control: '21', ruc: '12345678912'},
-      {id:'22', nombre: 'DHL GLOBAL FORWARDING ADUANAS PERU S.A', id_control: '22', ruc: '12345678912'},
-      {id:'23', nombre: 'AG INTERNATIONAL FREIGHT FORWARDER S.A.C.', id_control: '23', ruc: '12345678912'},
-      {id:'24', nombre: 'ALEFERO OPERADOR INTERNACIONAL S.A.C.', id_control: '24', ruc: '12345678912'},
-      {id:'25', nombre: 'LINK LOGISTICA PERU S.A.', id_control: '25', ruc: '12345678912'},
-      {id:'26', nombre: 'HANSA ADUANAS S.A', id_control: '26', ruc: '12345678912'},
-      {id:'27', nombre: 'GARCIA PERSICO S. A. C.', id_control: '27', ruc: '12345678912'},
-      {id:'28', nombre: 'INTERNATIONAL FREIGHT SHIPPING S.A.C', id_control: '28', ruc: '12345678912'},
-      {id:'29', nombre: 'NP LOGISTICS S.A.C', id_control: '29', ruc: '12345678912'},
-      {id:'30', nombre: 'NEW WORLD ADUANAS S.A.C.', id_control: '30', ruc: '12345678912'},
-      {id:'31', nombre: 'DOGANA SA', id_control: '31', ruc: '12345678912'},
-      {id:'32', nombre: 'CEVA PERU ADUANAS S.A.C.', id_control: '32', ruc: '12345678912'},
-      {id:'33', nombre: 'AUSA OPERACIONES LOGISTICAS S.A.', id_control: '33', ruc: '12345678912'},
-      {id:'34', nombre: 'WORLD INTERNATIONAL ADUANAS S.A.C.', id_control: '34', ruc: '12345678912'}
-      ];
+    this.clientes = this.clientesService.getMenuList();
   }
 
 }
