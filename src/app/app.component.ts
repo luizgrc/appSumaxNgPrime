@@ -1,8 +1,11 @@
 import { Component, OnInit, Inject, ViewEncapsulation, OnChanges, OnDestroy } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, PlatformLocation } from '@angular/common';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { UsuarioService } from './services/usuario.service';
 import { Subscription } from 'rxjs';
+import { Router, NavigationStart } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { Event as NavigationEvent } from '@angular/router';
 class Car {
   vin: string;
   year: number;
@@ -33,11 +36,44 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private _animationBuilder: AnimationBuilder,
     @Inject(DOCUMENT) private _document: any,
-    private usuarioService: UsuarioService) {
+    private usuarioService: UsuarioService,
+    router: Router) {
 
+    router.events
+      .pipe(
+        filter(
+          (event: NavigationEvent) => {
+
+            return (event instanceof NavigationStart);
+
+          }
+        )
+      ).subscribe((event: NavigationStart) => {
+        console.group('NavigationStart Event');
+        console.log('navigation id:', event.id);
+        console.log('route:', event.url);
+        if (event.url === '/login' && event.navigationTrigger === 'popstate') {
+          // this.usuarioService.setItem('false');
+          // this.usuarioService.logeado.emit(this.usuarioService.getItem());
+          this.usuariologeado = false;
+        }
+        console.log('trigger:', event.navigationTrigger);
+
+        if (event.restoredState) {
+
+          console.warn(
+            'restoring navigation id:',
+            event.restoredState.navigationId
+          );
+
+        }
+
+        console.groupEnd();
+      });
   }
 
   ngOnInit(): void {
+    this.usuariologeado = this.usuarioService.getItem();
     this.logeadoSuscription = this.usuarioService.logeado.subscribe(estado => {
       this.usuariologeado = estado;
     });
@@ -45,20 +81,6 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.layoutScreen) {
       this.hide();
     }
-
-    this.cars = [
-      new Car('asd', 2, 'asdas', 'asdasd'),
-      new Car('asd', 2, 'asdas', 'asdasd'),
-      new Car('asd', 2, 'asdas', 'asdasd'),
-    ];
-
-
-    this.cols = [
-      { field: 'vin', header: 'Vin' },
-      { field: 'year', header: 'Year' },
-      { field: 'brand', header: 'Brand' },
-      { field: 'color', header: 'Color' }
-    ];
 
   }
   ngOnDestroy() {

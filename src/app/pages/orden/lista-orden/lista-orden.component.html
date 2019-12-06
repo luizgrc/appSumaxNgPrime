@@ -18,7 +18,7 @@
                 <span>T.Fecha</span>
                 <div class="ui-inputgroup">
                   <p-dropdown styleClass="prueba" [options]="00" [(ngModel)]="selecttf" placeholder="00" optionLabel="name" [showClear]="true"></p-dropdown>
-                  <p-calendar styleClass="prueba" [(ngModel)]="fecha1" [showIcon]="true"></p-calendar>
+                  <p-calendar #fecha1element styleClass="prueba" [(ngModel)]="fecha1" [showIcon]="true"></p-calendar>
                   <p-calendar styleClass="prueba" [(ngModel)]="fecha2" [showIcon]="true"></p-calendar>
                 </div>
               </div>

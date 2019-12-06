@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MenuItem } from 'primeng/components/common/menuitem';
 import { trigger, style, state, transition, animate } from '@angular/animations';
 import { SidebarService } from '../../services/sidebar.service';
+import { Router } from '@angular/router';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
     selector: 'vertical-layout',
@@ -18,7 +20,7 @@ import { SidebarService } from '../../services/sidebar.service';
 })
 export class VerticalLayoutComponent implements OnInit {
     menus = [];
-    constructor(private sidebarservice: SidebarService) {
+    constructor(private sidebarservice: SidebarService, private router: Router, private usuarioService: UsuarioService) {
         this.menus = sidebarservice.getMenuList();
     }
 
@@ -51,5 +53,9 @@ export class VerticalLayoutComponent implements OnInit {
 
     hasBackgroundImage() {
         return this.sidebarservice.hasBackgroundImage;
+    }
+    logout() {
+        this.usuarioService.logeado.emit(false);
+        this.router.navigate(['/login']);
     }
 }

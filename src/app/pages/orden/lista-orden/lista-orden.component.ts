@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Car } from 'app/model/Car';
 import { Transporte } from 'app/model/Transporte';
 import { SelectItem } from 'primeng/components/common/selectitem';
@@ -9,7 +9,8 @@ import { SelectItem } from 'primeng/components/common/selectitem';
   styleUrls: ['./lista-orden.component.scss']
   // encapsulation: ViewEncapsulation.None
 })
-export class ListaOrdenComponent implements OnInit {
+export class ListaOrdenComponent implements OnInit, AfterViewInit {
+
   cars1: Car[];
   brands: SelectItem[];
 
@@ -20,8 +21,13 @@ export class ListaOrdenComponent implements OnInit {
 
   transporte: Transporte[];
   rowGroupMetadata: any;
+  @ViewChild('fecha1element', { static: false }) fecha1element: ElementRef;
   constructor() { }
-
+  ngAfterViewInit(): void {
+    console.log(this.fecha1element.nativeElement);
+    this.fecha1element = this.fecha1element['el']['nativeElement'] as ElementRef;
+    console.log(this.fecha1element['children']);
+  }
   ngOnInit() {
     this.cars1 = [
       new Car('ASd', 'ASd', 'ASd', 'ASd'),

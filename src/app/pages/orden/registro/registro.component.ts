@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss']
 })
-export class RegistroComponent implements OnInit, OnDestroy, OnChanges {
+export class RegistroComponent implements OnInit, OnDestroy {
   constructor(public render: Renderer2, private activatedRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -56,7 +56,5 @@ export class RegistroComponent implements OnInit, OnDestroy, OnChanges {
     console.log('Registro Component DestroY!')
 
   }
-  ngOnChanges() {
-    console.log('changes');
-  }
+
 }
