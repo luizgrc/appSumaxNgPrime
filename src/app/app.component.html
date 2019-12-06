@@ -1,8 +1,9 @@
-<!-- <div class="layout-wrapper layout-overlay layout-static-inactive layout-overlay-active layout-menu-dark">
+<login *ngIf="!usuariologeado"></login>
+<div *ngIf="usuariologeado" class="layout-wrapper layout-overlay layout-static-inactive layout-overlay-active layout-menu-dark">
   <vertical-layout></vertical-layout>
-</div> -->
+</div>
 <!-- <router-outlet></router-outlet> -->
-<login></login>
+<!-- <login></login> -->
 <!-- <h3 class="first">Basic</h3>
 <p-table [value]="cars">
     <ng-template pTemplate="header">

@@ -1,6 +1,8 @@
-import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Inject, ViewEncapsulation, OnChanges, OnDestroy } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
+import { UsuarioService } from './services/usuario.service';
+import { Subscription } from 'rxjs';
 class Car {
   vin: string;
   year: number;
@@ -18,24 +20,27 @@ class Car {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  encapsulation : ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   layoutScreen: any;
   player: AnimationPlayer;
-
+  logeadoSuscription: Subscription;
   cars: Car[];
 
   cols: any[];
-
+  usuariologeado: boolean = false;
   constructor(
     private _animationBuilder: AnimationBuilder,
-    @Inject(DOCUMENT) private _document: any) {
+    @Inject(DOCUMENT) private _document: any,
+    private usuarioService: UsuarioService) {
 
   }
 
   ngOnInit(): void {
-
+    this.logeadoSuscription = this.usuarioService.logeado.subscribe(estado => {
+      this.usuariologeado = estado;
+    });
     this.layoutScreen = this._document.body.querySelector('#layout-screen');
     if (this.layoutScreen) {
       this.hide();
@@ -55,6 +60,9 @@ export class AppComponent implements OnInit {
       { field: 'color', header: 'Color' }
     ];
 
+  }
+  ngOnDestroy() {
+    this.logeadoSuscription.unsubscribe();
   }
   hide(): void {
     this.player =
