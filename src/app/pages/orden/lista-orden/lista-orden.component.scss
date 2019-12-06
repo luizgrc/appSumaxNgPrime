@@ -1,3 +1,10 @@
+.ui-state-highlight {
+   background-color: #AFD3ED !important;
+}
+.ui-datatable .ui-datatable-data tr td {
+   border-bottom: none !important;
+}
+
 .ui-g-2,
 .ui-md-2,
 .ui-lg-2 {
@@ -64,6 +71,7 @@
    height: 30px !important;
    margin: 0 0.5px 0 0.5px;
 }
+
 
 
 
