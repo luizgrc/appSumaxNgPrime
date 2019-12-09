@@ -129,7 +129,7 @@
           <div class="ui-g-12">
               <p-scrollPanel [style]="{width: '100%', height: '242px'}">
                   <div>
-                      <p-table [value]="transporte" id="tabla2" sortField="otransporte" sortMode="single" (onSort)="onSort()"   [tableStyle]="{'table-layout':'auto'}"  [columns]="cols" [responsive]="false">
+                      <p-table [value]="transporte" id="tabla2" selectionMode="single"  [(selection)]="selectedRow"  dataKey="otransporte" sortField="otransporte" sortMode="single" (onSort)="onSort()"   [tableStyle]="{'table-layout':'auto'}"  [columns]="cols" [responsive]="false">
                           <ng-template pTemplate="header">
                               <tr>
                                   <th style="white-space: nowrap;">O.Transporte</th>
@@ -158,7 +158,7 @@
                               </tr>
                           </ng-template>
                           <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
-                              <tr>
+                              <tr styleClass="pruebatabla" [pSelectableRow]="rowData">
                                   <td *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">
                                       {{rowData.otransporte}}
                                   </td>

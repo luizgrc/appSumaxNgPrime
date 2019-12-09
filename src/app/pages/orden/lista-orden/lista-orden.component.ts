@@ -18,7 +18,7 @@ export class ListaOrdenComponent implements OnInit, AfterViewInit {
   fecha2: Date;
 
   sales: any[];
-
+   selectedRow: any;
   transporte: Transporte[];
   rowGroupMetadata: any;
   @ViewChild('fecha1element', { static: false }) fecha1element: ElementRef;

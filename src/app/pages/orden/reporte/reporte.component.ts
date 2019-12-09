@@ -1,8 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Clientes } from 'app/model/Clientes';
 import { ClientesService } from 'app/services/clientes.service';
-
+import * as moment from 'moment'
+import { ReporteService } from 'app/services/reporte.service';
 
 @Component({
   selector: 'reporte',
@@ -20,14 +21,14 @@ export class ReporteComponent implements OnInit {
   fechaH;
   tipoenvio;
   selectFl;
-
   cantidadco;
   cantidadca;
 
-  constructor(private clientesService: ClientesService) {
+  constructor(private clientesService: ClientesService, private reporteService: ReporteService) {
   }
 
   ngOnInit() {
+
     const interact = require('interactjs');
     const position = { x: 0, y: 0 }
     interact('.draggable-reporte').draggable({
@@ -101,7 +102,7 @@ export class ReporteComponent implements OnInit {
 
     });
   }
-
+  //https://codepen.io/adrianhurt/pen/ZOyKqJ url de chartline
   canvasline() {
     this.chart = new Chart('canvas', {
       type: 'line',
@@ -134,6 +135,9 @@ export class ReporteComponent implements OnInit {
         scales: {
           xAxes: [{
             type: "time",
+            time: {
+              unit: 'day'
+            },
             display: true,
             scaleLabel: {
               display: true,
@@ -150,7 +154,14 @@ export class ReporteComponent implements OnInit {
         }
       }
     });
+
+
+
   }
+
+
+
+
   calcular_fechas_mensuales() {
     let date = new Date()
     let primerDia = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -161,21 +172,25 @@ export class ReporteComponent implements OnInit {
   consultarreporte() {
 
     if (this.selectFl.id == "1") {
-      let desde = Date.parse(this.fechaD);
-      let hasta = Date.parse(this.fechaH);
       let arraycontenedor = [];
       let arraycargas = [];
       let cantidadcontenedor = 0;
       let cantidadcargas = 0;
+      let a = moment([this.fechaH.getFullYear(), this.fechaH.getMonth(), this.fechaH.getDate()]);
+      let b = moment([this.fechaD.getFullYear(), this.fechaD.getMonth(), this.fechaD.getDate()]);
+      let dif = (a.diff(b, 'months'));
+      console.log(dif);
+
+      let desde = Date.parse(this.fechaD);
+      let hasta = Date.parse(this.fechaH);
+
 
       for (let i = 0; i < this.tipoenvio.length; i++) {
         let fecha = Date.parse(this.tipoenvio[i]["fecha"]);
         if ((fecha <= hasta && fecha >= desde)) {
-          //console.log(this.tipoenvio[i]["fecha"]);
           let tipo = this.tipoenvio[i]["tipo"];
           if (tipo == "contenedor") {
             cantidadcontenedor = cantidadcontenedor + Number(this.tipoenvio[i]["cantidad"]);
-
             arraycontenedor.push({ x: this.tipoenvio[i]["fecha"], y: this.tipoenvio[i]["cantidad"] });
           } else {
             cantidadcargas = cantidadcargas + Number(this.tipoenvio[i]["cantidad"]);
@@ -192,28 +207,79 @@ export class ReporteComponent implements OnInit {
       this.addData(this.chart2, 'Contenedor', cantidadcontenedor);
       this.addData(this.chart2, 'Carga Suelta', cantidadcargas);
 
-      //let arraycargas =[ {x:'12/12/12',y:'50'},{x:'12/12/13',y:'60'},{x:'12/12/14',y:'55'} ];
-      //console.log(this.chart.data.datasets[0]['data']);
+      let arraycontenedor2 = [];
+      let arraycargas2 = [];
 
-      console.log(arraycontenedor);
-      console.log(arraycargas);
+      if (dif < 1) {
+        this.redondeardias(arraycontenedor,arraycontenedor2);
+        this.redondeardias(arraycargas,arraycargas2);
+        this.chart.options.scales["xAxes"]["0"]["time"]["unit"]= "day"
+      }
+      else if (dif < 12) {
+        this.redondearmeses(arraycontenedor,arraycontenedor2);
+        this.redondearmeses(arraycargas,arraycargas2);
+        this.chart.options.scales["xAxes"]["0"]["time"]["unit"]= "month"
+      }
+      else {
+        this.redondearyear(arraycontenedor,arraycontenedor2);
+        this.redondearyear(arraycargas,arraycargas2);
+        this.chart.options.scales["xAxes"]["0"]["time"]["unit"]= "year"
+      }
 
-      this.chart.data.datasets[0]['data'] = arraycontenedor;
-      this.chart.data.datasets[1]['data'] = arraycargas;
+      this.chart.data.datasets[0]['data'] = arraycontenedor2;
+      this.chart.data.datasets[1]['data'] = arraycargas2;
       this.chart.update();
 
-      //let arraycontenedor =[];
-      //this.addDataline(this.chart,arraycontenedor);
-      //this.addDataline(this.chart,arraycargas);
     }
 
   }
 
-  addDataline(chart, data) {
-    //chart.data.datasets.forEach((dataset) => {
-    chart.data.dataset[1]['data'] = data;
-    //});
-    chart.update();
+  redondeardias(a,a2){
+    let array = a.reduce((groups, item) => {
+      let val = new Date(item['x']).getDate();
+      groups[val] = groups[val] || { x: item.x, y: 0 };
+      groups[val].y += Number(item.y);
+      return groups;
+    }, {});
+    
+    for (const key in array) {
+      if (array.hasOwnProperty(key)) {
+        const element = array[key];
+        a2.push(element);
+      }
+    }
+  }
+
+  redondearmeses(a,a2){
+    let array = a.reduce((groups, item) => {
+      let val = new Date(item['x']).getMonth();
+      groups[val] = groups[val] || { x: item.x, y: 0 };
+      groups[val].y += Number(item.y);
+      return groups;
+    }, {});
+    
+    for (const key in array) {
+      if (array.hasOwnProperty(key)) {
+        const element = array[key];
+        a2.push(element);
+      }
+    }
+  }
+  
+  redondearyear(a,a2){
+    let array = a.reduce((groups, item) => {
+      let val = new Date(item['x']).getFullYear();
+      groups[val] = groups[val] || { x: item.x, y: 0 };
+      groups[val].y += Number(item.y);
+      return groups;
+    }, {});
+    
+    for (const key in array) {
+      if (array.hasOwnProperty(key)) {
+        const element = array[key];
+        a2.push(element);
+      }
+    }
   }
 
   addData(chart, label, data) {
@@ -224,87 +290,9 @@ export class ReporteComponent implements OnInit {
     chart.update();
   }
 
-  removeData(chart) {
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-      dataset.data.pop();
-    });
-    chart.update();
-  }
 
   llenardatafalsa() {
-    this.tipoenvio = [
-      { id: '1', tipo: 'contenedor', cantidad: '10', fecha: '12/01/2019' },
-      { id: '2', tipo: 'contenedor', cantidad: '20', fecha: '12/02/2019' },
-      { id: '3', tipo: 'contenedor', cantidad: '30', fecha: '12/03/2019' },
-      { id: '4', tipo: 'contenedor', cantidad: '40', fecha: '12/04/2019' },
-      { id: '5', tipo: 'contenedor', cantidad: '50', fecha: '12/05/2019' },
-      { id: '6', tipo: 'contenedor', cantidad: '25', fecha: '11/01/2019' },
-      { id: '7', tipo: 'contenedor', cantidad: '30', fecha: '11/02/2019' },
-      { id: '8', tipo: 'contenedor', cantidad: '12', fecha: '11/03/2019' },
-      { id: '9', tipo: 'contenedor', cantidad: '56', fecha: '11/04/2019' },
-      { id: '10', tipo: 'contenedor', cantidad: '41', fecha: '11/05/2019' },
-      { id: '11', tipo: 'contenedor', cantidad: '56', fecha: '11/06/2019' },
-      { id: '12', tipo: 'contenedor', cantidad: '58', fecha: '11/07/2019' },
-      { id: '13', tipo: 'contenedor', cantidad: '82', fecha: '11/08/2019' },
-      { id: '14', tipo: 'contenedor', cantidad: '89', fecha: '11/09/2019' },
-      { id: '15', tipo: 'contenedor', cantidad: '56', fecha: '11/10/2019' },
-      { id: '16', tipo: 'contenedor', cantidad: '98', fecha: '11/11/2019' },
-      { id: '17', tipo: 'contenedor', cantidad: '58', fecha: '11/12/2019' },
-      { id: '18', tipo: 'contenedor', cantidad: '84', fecha: '11/13/2019' },
-      { id: '19', tipo: 'contenedor', cantidad: '50', fecha: '11/14/2019' },
-      { id: '20', tipo: 'contenedor', cantidad: '19', fecha: '11/15/2019' },
-      { id: '22', tipo: 'contenedor', cantidad: '30', fecha: '11/16/2019' },
-      { id: '23', tipo: 'contenedor', cantidad: '12', fecha: '11/17/2019' },
-      { id: '24', tipo: 'contenedor', cantidad: '56', fecha: '11/18/2019' },
-      { id: '25', tipo: 'contenedor', cantidad: '41', fecha: '11/19/2019' },
-      { id: '26', tipo: 'contenedor', cantidad: '56', fecha: '11/20/2019' },
-      { id: '27', tipo: 'contenedor', cantidad: '58', fecha: '11/21/2019' },
-      { id: '28', tipo: 'contenedor', cantidad: '82', fecha: '11/22/2019' },
-      { id: '29', tipo: 'contenedor', cantidad: '89', fecha: '11/23/2019' },
-      { id: '30', tipo: 'contenedor', cantidad: '56', fecha: '11/24/2019' },
-      { id: '31', tipo: 'contenedor', cantidad: '98', fecha: '11/25/2019' },
-      { id: '32', tipo: 'contenedor', cantidad: '58', fecha: '11/26/2019' },
-      { id: '33', tipo: 'contenedor', cantidad: '84', fecha: '11/27/2019' },
-      { id: '34', tipo: 'contenedor', cantidad: '50', fecha: '11/28/2019' },
-      { id: '35', tipo: 'contenedor', cantidad: '19', fecha: '11/29/2019' },
-      { id: '36', tipo: 'contenedor', cantidad: '58', fecha: '11/30/2019' },
-      { id: '37', tipo: 'cargasuelta', cantidad: '11', fecha: '12/01/2019' },
-      { id: '38', tipo: 'cargasuelta', cantidad: '12', fecha: '12/02/2019' },
-      { id: '39', tipo: 'cargasuelta', cantidad: '13', fecha: '12/03/2019' },
-      { id: '40', tipo: 'cargasuelta', cantidad: '14', fecha: '12/04/2019' },
-      { id: '41', tipo: 'cargasuelta', cantidad: '15', fecha: '12/05/2019' },
-      { id: '42', tipo: 'cargasuelta', cantidad: '12', fecha: '11/01/2019' },
-      { id: '43', tipo: 'cargasuelta', cantidad: '13', fecha: '11/02/2019' },
-      { id: '44', tipo: 'cargasuelta', cantidad: '11', fecha: '11/03/2019' },
-      { id: '45', tipo: 'cargasuelta', cantidad: '15', fecha: '11/04/2019' },
-      { id: '46', tipo: 'cargasuelta', cantidad: '14', fecha: '11/05/2019' },
-      { id: '47', tipo: 'cargasuelta', cantidad: '15', fecha: '11/06/2019' },
-      { id: '48', tipo: 'cargasuelta', cantidad: '15', fecha: '11/07/2019' },
-      { id: '49', tipo: 'cargasuelta', cantidad: '18', fecha: '11/08/2019' },
-      { id: '50', tipo: 'cargasuelta', cantidad: '18', fecha: '11/09/2019' },
-      { id: '51', tipo: 'cargasuelta', cantidad: '15', fecha: '11/10/2019' },
-      { id: '52', tipo: 'cargasuelta', cantidad: '19', fecha: '11/11/2019' },
-      { id: '53', tipo: 'cargasuelta', cantidad: '15', fecha: '11/12/2019' },
-      { id: '54', tipo: 'cargasuelta', cantidad: '18', fecha: '11/13/2019' },
-      { id: '55', tipo: 'cargasuelta', cantidad: '15', fecha: '11/14/2019' },
-      { id: '56', tipo: 'cargasuelta', cantidad: '11', fecha: '11/15/2019' },
-      { id: '58', tipo: 'cargasuelta', cantidad: '13', fecha: '11/16/2019' },
-      { id: '59', tipo: 'cargasuelta', cantidad: '11', fecha: '11/17/2019' },
-      { id: '60', tipo: 'cargasuelta', cantidad: '15', fecha: '11/18/2019' },
-      { id: '61', tipo: 'cargasuelta', cantidad: '14', fecha: '11/19/2019' },
-      { id: '62', tipo: 'cargasuelta', cantidad: '15', fecha: '11/20/2019' },
-      { id: '63', tipo: 'cargasuelta', cantidad: '15', fecha: '11/21/2019' },
-      { id: '64', tipo: 'cargasuelta', cantidad: '18', fecha: '11/22/2019' },
-      { id: '65', tipo: 'cargasuelta', cantidad: '18', fecha: '11/23/2019' },
-      { id: '66', tipo: 'cargasuelta', cantidad: '15', fecha: '11/24/2019' },
-      { id: '67', tipo: 'cargasuelta', cantidad: '19', fecha: '11/25/2019' },
-      { id: '68', tipo: 'cargasuelta', cantidad: '15', fecha: '11/26/2019' },
-      { id: '69', tipo: 'cargasuelta', cantidad: '18', fecha: '11/27/2019' },
-      { id: '70', tipo: 'cargasuelta', cantidad: '15', fecha: '11/28/2019' },
-      { id: '71', tipo: 'cargasuelta', cantidad: '11', fecha: '11/29/2019' },
-      { id: '72', tipo: 'cargasuelta', cantidad: '15', fecha: '11/30/2019' }
-    ];
+    this.tipoenvio = this.reporteService.getdatareporte();
   }
 
   llenarcombos() {
