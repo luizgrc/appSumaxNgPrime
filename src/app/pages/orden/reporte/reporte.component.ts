@@ -4,6 +4,7 @@ import { Clientes } from 'app/model/Clientes';
 import { ClientesService } from 'app/services/clientes.service';
 import * as moment from 'moment'
 import { ReporteService } from 'app/services/reporte.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'reporte',
@@ -24,7 +25,9 @@ export class ReporteComponent implements OnInit {
   cantidadco;
   cantidadca;
 
-  constructor(private clientesService: ClientesService, private reporteService: ReporteService) {
+  constructor(
+    private clientesService: ClientesService, private reporteService: ReporteService,
+    private router: Router, private activatedRouter: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -211,19 +214,19 @@ export class ReporteComponent implements OnInit {
       let arraycargas2 = [];
 
       if (dif < 1) {
-        this.redondeardias(arraycontenedor,arraycontenedor2);
-        this.redondeardias(arraycargas,arraycargas2);
-        this.chart.options.scales["xAxes"]["0"]["time"]["unit"]= "day"
+        this.redondeardias(arraycontenedor, arraycontenedor2);
+        this.redondeardias(arraycargas, arraycargas2);
+        this.chart.options.scales["xAxes"]["0"]["time"]["unit"] = "day"
       }
       else if (dif < 12) {
-        this.redondearmeses(arraycontenedor,arraycontenedor2);
-        this.redondearmeses(arraycargas,arraycargas2);
-        this.chart.options.scales["xAxes"]["0"]["time"]["unit"]= "month"
+        this.redondearmeses(arraycontenedor, arraycontenedor2);
+        this.redondearmeses(arraycargas, arraycargas2);
+        this.chart.options.scales["xAxes"]["0"]["time"]["unit"] = "month"
       }
       else {
-        this.redondearyear(arraycontenedor,arraycontenedor2);
-        this.redondearyear(arraycargas,arraycargas2);
-        this.chart.options.scales["xAxes"]["0"]["time"]["unit"]= "year"
+        this.redondearyear(arraycontenedor, arraycontenedor2);
+        this.redondearyear(arraycargas, arraycargas2);
+        this.chart.options.scales["xAxes"]["0"]["time"]["unit"] = "year"
       }
 
       this.chart.data.datasets[0]['data'] = arraycontenedor2;
@@ -234,14 +237,14 @@ export class ReporteComponent implements OnInit {
 
   }
 
-  redondeardias(a,a2){
+  redondeardias(a, a2) {
     let array = a.reduce((groups, item) => {
       let val = new Date(item['x']).getDate();
       groups[val] = groups[val] || { x: item.x, y: 0 };
       groups[val].y += Number(item.y);
       return groups;
     }, {});
-    
+
     for (const key in array) {
       if (array.hasOwnProperty(key)) {
         const element = array[key];
@@ -250,14 +253,14 @@ export class ReporteComponent implements OnInit {
     }
   }
 
-  redondearmeses(a,a2){
+  redondearmeses(a, a2) {
     let array = a.reduce((groups, item) => {
       let val = new Date(item['x']).getMonth();
       groups[val] = groups[val] || { x: item.x, y: 0 };
       groups[val].y += Number(item.y);
       return groups;
     }, {});
-    
+
     for (const key in array) {
       if (array.hasOwnProperty(key)) {
         const element = array[key];
@@ -265,15 +268,15 @@ export class ReporteComponent implements OnInit {
       }
     }
   }
-  
-  redondearyear(a,a2){
+
+  redondearyear(a, a2) {
     let array = a.reduce((groups, item) => {
       let val = new Date(item['x']).getFullYear();
       groups[val] = groups[val] || { x: item.x, y: 0 };
       groups[val].y += Number(item.y);
       return groups;
     }, {});
-    
+
     for (const key in array) {
       if (array.hasOwnProperty(key)) {
         const element = array[key];
@@ -327,5 +330,19 @@ export class ReporteComponent implements OnInit {
       { id: '8', nombrefiltro: 'Vehiculos' }
     ];
     this.clientes = this.clientesService.getMenuList();
+  }
+  closeViaParent() {
+    this.router.navigate(
+      [
+        {
+          outlets: {
+            reporte: null
+          }
+        }
+      ],
+      {
+        relativeTo: this.activatedRouter.parent
+      }
+    );
   }
 }

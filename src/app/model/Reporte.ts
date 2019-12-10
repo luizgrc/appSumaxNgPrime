@@ -7,5 +7,4 @@ export class Reporte {
         this.cantidad = cantidad;
         this.fecha = fecha;
     }
-    
 }

@@ -8,17 +8,24 @@ import { InputTextModule } from 'primeng/inputtext';
 import { LayoutModule } from './layout/layout.module';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
+import { AplicacionesComponent } from './pages/aplicaciones/aplicaciones.component';
+import { VerticalLayoutComponent } from './layout/vertical-layout/vertical-layout.component';
 
 
 const appRoutes: Routes = [
   {
     path: 'pages',
+    component: VerticalLayoutComponent,
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
     // loadChildren: './pages/pages.module#PagesModule'
   },
   {
     path: 'login',
     component : LoginComponent
+  },
+  {
+    path: 'aplicaciones',
+    component : AplicacionesComponent
   },
   {
     path: '**',
@@ -36,7 +43,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AplicacionesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,12 @@
 <login *ngIf="!usuariologeado"></login>
-<div *ngIf="usuariologeado" class="layout-wrapper layout-overlay layout-static-inactive layout-overlay-active layout-menu-dark">
-  <vertical-layout></vertical-layout>
-</div>
+<router-outlet *ngIf="usuariologeado"></router-outlet>
+
+<!-- <div *ngIf="usuariologeado" class="layout-wrapper layout-overlay layout-static-inactive layout-overlay-active layout-menu-dark">
+  <vertical-layout *ngIf="usuariologeado"></vertical-layout>
+</div> -->
+
+
+
 <!-- <router-outlet></router-outlet> -->
 <!-- <login></login> -->
 <!-- <h3 class="first">Basic</h3>
