@@ -24,11 +24,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.usuarioService.setItem('false');
+    this.usuarioService.logeado.emit(this.usuarioService.getItem());
   }
   login() {
     this.usuarioService.setItem('true')
     this.usuarioService.logeado.emit(this.usuarioService.getItem());
-    this.router.navigate(['/pages/orden']);
+    // this.router.navigate(['/pages/orden']);
+    this.router.navigate(['/aplicaciones']);
   }
 
 }

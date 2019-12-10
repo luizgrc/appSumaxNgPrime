@@ -2,13 +2,13 @@
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
 /*Customize colors*/
-$overlay-color: #008cff;
-$button-color: #1100ff;
-$button-border-color: #23bbe9;
-$overlay-gradiant1: #006edc;
-$overlay-gradiant2: #36119b;
+$overlay-color: #e22f22;
+$button-color: #e22f22;
+$button-border-color: #ffffff;
+$overlay-gradiant1: #e22f22;
+$overlay-gradiant2: #e22f22;
 $background-color: #ffffff;
-$primary-color: #d43834;
+$primary-color: #e22f22;
 $secunday-color: #262626;
 $background-body-color: #f2f2f2;
 
@@ -17,7 +17,8 @@ $background-body-color: #f2f2f2;
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  // font-family: "Montserrat", sans-serif;
+  font-family: "cabin", sans-serif;
   background-color: $background-body-color;
   display: flex;
   flex-direction: column;
