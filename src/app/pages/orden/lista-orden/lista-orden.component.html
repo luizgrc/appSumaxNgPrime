@@ -1,442 +1,1038 @@
 <div class="ui-g-12">
-    <p-card  styleClass="ui-card-shadow">
-      <p-header>
-        <div class="card-header">
-          <div class="card-header-title">
-            <span>Seguimiento de Ordenes Operativas de Transporte</span>
+  <p-card styleClass="ui-card-shadow">
+    <p-header>
+      <div class="card-header">
+        <div class="card-header-title">
+          <span>Seguimiento de Ordenes Operativas de Transporte</span>
+        </div>
+      </div>
+    </p-header>
+    <div class="card-body-header">
+      <div class="ui-g-12 ui-fluid">
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span>O.Transporte</span>
+          <p-inputMask styleClass="prueba" mask="9999/99/999999" [(ngModel)]="v_otransporte"
+            placeholder="2019/00/000000"></p-inputMask>
+        </div>
+
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+          <span>T.Fecha</span>
+          <div class="ui-inputgroup">
+            <p-dropdown styleClass="prueba" [options]="00" [(ngModel)]="selecttf" placeholder="00" optionLabel="name"
+              [showClear]="true"></p-dropdown>
+            <p-calendar #fecha1element styleClass="prueba" [(ngModel)]="fecha1" [showIcon]="true"></p-calendar>
+            <p-calendar styleClass="prueba" [(ngModel)]="fecha2" [showIcon]="true"></p-calendar>
           </div>
         </div>
-      </p-header>
-      <div class="card-body-header">
-          <div class="ui-g-12 ui-fluid">
-              <div class="ui-g-12 ui-md-2 ui-lg-1" >
-                <span>O.Transporte</span>
-                  <p-inputMask styleClass="prueba" mask="9999/99/999999" [(ngModel)]="v_otransporte" placeholder="2019/00/000000"></p-inputMask>
-              </div>
-                      
-              <div class="ui-g-12 ui-md-6 ui-lg-3">
-                <span>T.Fecha</span>
-                <div class="ui-inputgroup">
-                  <p-dropdown styleClass="prueba" [options]="00" [(ngModel)]="selecttf" placeholder="00" optionLabel="name" [showClear]="true"></p-dropdown>
-                  <p-calendar #fecha1element styleClass="prueba" [(ngModel)]="fecha1" [showIcon]="true"></p-calendar>
-                  <p-calendar styleClass="prueba" [(ngModel)]="fecha2" [showIcon]="true"></p-calendar>
-                </div>
-              </div>
-                      
-              <div class="ui-g-12 ui-md-2 ui-lg-1">
-                <span>T.Servicio</span>
-                <p-dropdown styleClass="prueba" [options]="00" [(ngModel)]="selecttf" placeholder="-Todos" optionLabel="name" [showClear]="true"></p-dropdown>
-              </div>
-                    
-              <div class="ui-g-12 ui-md-2 ui-lg-1">
-                <span>Cliente</span>
-                <div class="ui-inputgroup">
-                  <span class="ui-inputgroup-addon"><p-checkbox></p-checkbox></span>
-                  <input type="text" pInputText placeholder="">         
-                </div>
-              </div>
-                  
-              <div class="ui-g-12 ui-md-4 ui-lg-2">
-                <span>Incid</span>
-                  <div class="ui-inputgroup">
-                    <span class="ui-inputgroup-addon"><p-checkbox></p-checkbox></span>
-                      <input type="text" pInputText placeholder="">
-                    <span class="ui-inputgroup-addon"><p-checkbox></p-checkbox></span>         
-                  </div>
-              </div>
-                  
-              <div class="ui-g-12 ui-md-2 ui-lg-1">
-                <span>Vehiculo</span>
-                <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="">
-                </div>
-              </div>
-                  
-              <div class="ui-g-12 ui-md-2 ui-lg-1">
-                <span>Guia T</span>
-                <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="">
-                </div>
-              </div>
-                  
-              <div class="ui-g-12 ui-md-4 ui-lg-2">
-                <span>Estado</span>
-                <div class="ui-inputgroup">
-                  <span class="ui-inputgroup-addon"><p-checkbox></p-checkbox></span>
-                  <p-dropdown styleClass="pruebaespecial" [options]="pendiente" [(ngModel)]="selecttf" placeholder="01-pendiente" optionLabel="name" [showClear]="true"></p-dropdown>
-                </div>
-              </div>
-                  
-              <div class="ui-g-12 ui-md-2 ui-lg-1">
-                <span>O.Aduana</span>
-                <p-inputMask mask="9999/99/999999" styleClass="prueba" [(ngModel)]="v_aduana" placeholder="2019/00/000000"></p-inputMask>
-              </div>
-                  
-              <div class="ui-g-12 ui-md-2 ui-lg-1">
-                <span>Sectorista</span>
-                <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="">
-                </div>
-              </div>
-                  
-              <div class="ui-g-12 ui-md-2 ui-lg-1">
-                <span>Cod Div</span>
-                <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="">
-                </div>
-              </div>
-                  
-              <div class="ui-g-12 ui-md-2 ui-lg-1">
-                  <span>T. Envio</span>
-                  <p-dropdown styleClass="prueba" [options]="00" [(ngModel)]="selecttf" placeholder="-Todos" optionLabel="name" [showClear]="true"></p-dropdown>
-              </div>
-                  
-              <div class="ui-g-12 ui-md-6 ui-lg-3">
-                <span>Transpor</span>
-                <div class="ui-inputgroup">
-                  <span class="ui-inputgroup-addon"><p-checkbox></p-checkbox></span>
-                  <input type="text" pInputText placeholder="" style="border-right:inset">
-                  <input type="text" pInputText placeholder="">
-                </div>
-              </div>
-                  
-              <div class="ui-g-12 ui-md-2 ui-lg-1">
-                <span>Carreta</span>
-                  <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="">
-                  </div>
-              </div>
-              <div class="ui-g-12 ui-md-2 ui-lg-1">
-                <span>Guia A</span>
-                  <div class="ui-inputgroup">
-                    <input type="text" pInputText placeholder="">
-                  </div>
-              </div>
-                      
-              <div class="ui-g-12 ui-md-2 ui-lg-1">
-                <span># Cont</span>
-                  <div class="ui-inputgroup">
-                    <input type="text" pInputText placeholder="">
-                  </div>
-              </div>
-                  
-              <div class="ui-g-12 ui-md-4 ui-lg-2">
-                <button pButton type="button" label="Consultar" icon="pi pi-search" ></button>
-              </div>
-            </div>
-      </div>
-      <div class="card-body">
-          <div class="ui-g-12">
-              <p-scrollPanel [style]="{width: '100%', height: '242px'}">
-                  <div>
-                      <p-table [value]="transporte" id="tabla2" selectionMode="single"  [(selection)]="selectedRow"  dataKey="otransporte" sortField="otransporte" sortMode="single" (onSort)="onSort()"   [tableStyle]="{'table-layout':'auto'}"  [columns]="cols" [responsive]="false">
-                          <ng-template pTemplate="header">
-                              <tr>
-                                  <th style="white-space: nowrap;">O.Transporte</th>
-                                  <th style="white-space: nowrap;">Servicio</th>
-                                  <th style="white-space: nowrap;">O.Aduana</th>
-                                  <th style="white-space: nowrap;">Cliente</th>
-                                  <th style="white-space: nowrap;">T.Envio/UM</th>
-                                  <th style="white-space: nowrap;">Viaje</th>
-                                  <th style="white-space: nowrap;">O.Viaje</th>
-                                  <th style="white-space: nowrap;">Estado</th>
-                                  <th style="white-space: nowrap;">G.Transporte</th>
-                                  <th style="white-space: nowrap;">FH Hra Cita/Carguío</th>
-                                  <th style="white-space: nowrap;">Fch HraEntrega</th>
-                                  <th style="white-space: nowrap;">IMO</th>
-                                  <th style="white-space: nowrap;">Contenedor</th>
-                                  <th style="white-space: nowrap;">Peso Bruto</th>
-                                  <th style="white-space: nowrap;">Bul</th>
-                                  <th style="white-space: nowrap;">Zona</th>
-                                  <th style="white-space: nowrap;">Punto de Partida</th>
-                                  <th style="white-space: nowrap;">Punto de Llegada</th>
-                                  <th style="white-space: nowrap;">Transportista</th>
-                                  <th style="white-space: nowrap;">Vehiculo</th>
-                                  <th style="white-space: nowrap;">Chofer</th>
-                                  <th style="white-space: nowrap;">Guia Aduana</th>
-                                  <th style="white-space: nowrap;">Ult. Incidencia (Seguimiento)</th>
-                              </tr>
-                          </ng-template>
-                          <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
-                              <tr styleClass="pruebatabla" [pSelectableRow]="rowData">
-                                  <td *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">
-                                      {{rowData.otransporte}}
-                                  </td>
-                                  <td style="white-space: nowrap;" *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">{{rowData.servicio}}</td>
-                                  <td style="white-space: nowrap;" *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">{{rowData.oaduana}}</td>
-                                  <td style="white-space: nowrap;" *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">{{rowData.cliente}}</td>
-                                  <td style="white-space: nowrap;" *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">{{rowData.tenvio}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.viaje}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.oviaje}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.estado}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.gtransporte}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.fh_hra_cita}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.fh_hra_entrega}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.imo}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.contenedor}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.pesobruto}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.bul}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.zona}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.puntopartida}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.puntollegada}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.transportista}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.vehiculo}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.chofer}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.guia_aduana}}</td>
-                                  <td style="white-space: nowrap;">{{rowData.ultincidencia}}</td>
-                      
-                              </tr>
-                          </ng-template>
-                      </p-table>
-          
-                  </div>
-              </p-scrollPanel>
+
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span>T.Servicio</span>
+          <p-dropdown styleClass="prueba" [options]="00" [(ngModel)]="selecttf" placeholder="-Todos" optionLabel="name"
+            [showClear]="true"></p-dropdown>
+        </div>
+
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span>Cliente</span>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <p-checkbox></p-checkbox>
+            </span>
+            <input type="text" pInputText placeholder="">
           </div>
-          <div class="ui-g-12">
-              <div class="detalleviaje" style="text-align: center;">
-                <h5>Detalle del viaje</h5>
-                <label style="margin-right: 10px;"><i class = "fa fa-square-full" style="color: red;"></i> No tiene datos de la devolución del contenedor </label>
-                <label style="margin-right: 10px;"><i class = "fa fa-square-full" style="color: orange;"></i> Tiene otro punto de partida/Llegada </label>
-                <label style="margin-right: 10px;"><i class = "fa fa-square-full" style="color: orangered;"></i> No tiene datos de exportación </label>
-                <label style="margin-right: 10px;"><i class = "fa fa-square-full" style="color: skyblue;"></i> Viaje consolidado </label>
-                <label style="margin-right: 10px;"><i class = "fa fa-square-full" style="color: yellowgreen;"></i> Tiene otra unidad de medida </label>
-                <label style="margin-right: 10px;"><i class = "fa fa-square-full" style="color: plum;"></i> ContenedorXConfirmar </label>
-                <label><i style="color: green; font-size: large;" class="fa fa-file-excel"></i> Exportar Excel</label>
-              </div>
-              <p-scrollPanel [style]="{width: '100%', height: '146px'}">
-              <div>
-                  <p-table [value]="sales" [tableStyle]="{'table-layout':'auto'}" [columns]="cols" [responsive]="false">
-                      <ng-template pTemplate="header">
-                          <tr>
-                            <th rowspan="3"></th>  
-                            <th style="white-space: nowrap;" rowspan="3">Km.Inicial</th>
-                          </tr>
-                          <tr>
-                              <th style="white-space: nowrap;" colspan="2">Llegada Punto Carga</th>
-                              <th style="white-space: nowrap;" colspan="2">Inicio de la Carga</th>
-                              <th style="white-space: nowrap;" colspan="2">Fin de la Carga</th>
-                              <th style="white-space: nowrap;" colspan="2">Salido Punto Carga</th>
-                              <th style="white-space: nowrap;" colspan="2">Llegada Punto Entrega</th>
-                              <th style="white-space: nowrap;" colspan="2">Inicio de la Descarga</th>
-                              <th style="white-space: nowrap;" colspan="2">Fin de la Descarga</th>
-                              <th style="white-space: nowrap;" colspan="2">Salida Punto Carga</th>
-                              <th style="white-space: nowrap;" rowspan="3">Km.Inicial</th>
-                          </tr>
-                          <tr>
-                              <th style="white-space: nowrap;">Fecha</th>
-                              <th style="white-space: nowrap;">Hora</th>
-                              <th style="white-space: nowrap;">Fecha</th>
-                              <th style="white-space: nowrap;">Hora</th>
-                              <th style="white-space: nowrap;">Fecha</th>
-                              <th style="white-space: nowrap;">Hora</th>
-                              <th style="white-space: nowrap;">Fecha</th>
-                              <th style="white-space: nowrap;">Hora</th>
-                              <th style="white-space: nowrap;">Fecha</th>
-                              <th style="white-space: nowrap;">Hora</th>
-                              <th style="white-space: nowrap;">Fecha</th>
-                              <th style="white-space: nowrap;">Hora</th>
-                              <th style="white-space: nowrap;">Fecha</th>
-                              <th style="white-space: nowrap;">Hora</th>
-                              <th style="white-space: nowrap;">Fecha</th>
-                              <th style="white-space: nowrap;">Hora</th> 
-                          </tr>
-                      </ng-template>
-                      <ng-template pTemplate="body" let-sale>
-                          <tr>
-                              <td style="white-space: nowrap;">{{sale.brand}}</td>
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <input pInputText type="text" [(ngModel)]="sale.kminicial">
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                      {{sale.kminicial}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td>
-                              <td style="white-space: nowrap;" pEditableColumn style="white-space: nowrap;">
-                                  <p-cellEditor style="white-space: nowrap;">
-                                    <ng-template pTemplate="input">
-                                        <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                      {{sale.lastYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td> 
-                              <td style="white-space: nowrap;" pEditableColumn style="white-space: nowrap;">
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                        <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                        {{sale.thisYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td> 
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                      {{sale.lastYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td> 
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                        {{sale.thisYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td>
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                      {{sale.lastYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td> 
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                        {{sale.thisYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td>
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                      {{sale.lastYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td> 
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                        {{sale.thisYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td>
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                      {{sale.lastYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td> 
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                        {{sale.thisYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td>
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                      {{sale.lastYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td> 
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                        {{sale.thisYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td>
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                      {{sale.lastYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td> 
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                        {{sale.thisYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td>
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                      {{sale.lastYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td> 
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                        {{sale.thisYearSale}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td>   
-                              
-                              <td style="white-space: nowrap;" pEditableColumn>
-                                  <p-cellEditor>
-                                    <ng-template pTemplate="input">
-                                      <input pInputText type="text" [(ngModel)]="sale.kmfinal">
-                                    </ng-template>
-                                    <ng-template pTemplate="output">
-                                      {{sale.kmfinal}}
-                                    </ng-template>
-                                  </p-cellEditor>
-                              </td>
-                            </tr>
-                      </ng-template>
-                  </p-table>
-              </div>              
-            </p-scrollPanel>
+        </div>
+
+        <div class="ui-g-12 ui-md-4 ui-lg-2">
+          <span>Incid</span>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <p-checkbox></p-checkbox>
+            </span>
+            <input type="text" pInputText placeholder="">
+            <span class="ui-inputgroup-addon">
+              <p-checkbox></p-checkbox>
+            </span>
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span>Vehiculo</span>
+          <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="">
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span>Guia T</span>
+          <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="">
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-4 ui-lg-2">
+          <span>Estado</span>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <p-checkbox></p-checkbox>
+            </span>
+            <p-dropdown styleClass="pruebaespecial" [options]="pendiente" [(ngModel)]="selecttf"
+              placeholder="01-pendiente" optionLabel="name" [showClear]="true"></p-dropdown>
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span>O.Aduana</span>
+          <p-inputMask mask="9999/99/999999" styleClass="prueba" [(ngModel)]="v_aduana" placeholder="2019/00/000000">
+          </p-inputMask>
+        </div>
+
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span>Sectorista</span>
+          <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="">
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span>Cod Div</span>
+          <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="">
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span>T. Envio</span>
+          <p-dropdown styleClass="prueba" [options]="00" [(ngModel)]="selecttf" placeholder="-Todos" optionLabel="name"
+            [showClear]="true"></p-dropdown>
+        </div>
+
+        <div class="ui-g-12 ui-md-6 ui-lg-3">
+          <span>Transpor</span>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">
+              <p-checkbox></p-checkbox>
+            </span>
+            <input type="text" pInputText placeholder="" style="border-right:inset">
+            <input type="text" pInputText placeholder="">
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span>Carreta</span>
+          <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="">
+          </div>
+        </div>
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span>Guia A</span>
+          <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="">
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-2 ui-lg-1">
+          <span># Cont</span>
+          <div class="ui-inputgroup">
+            <input type="text" pInputText placeholder="">
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-4 ui-lg-2">
+          <button pButton type="button" label="Consultar" icon="pi pi-search"></button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="ui-g-12">
+        <p-table [columns]="scrollableCols" [frozenColumns]="frozenCols" [value]="transporte" [scrollable]="true"
+          scrollHeight="500px" frozenWidth="200px" sortField="otransporte" sortMode="single" (onSort)="onSort()">
+          <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+              <col *ngFor="let col of columns" style="width:200px">
+            </colgroup>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="frozenbody" let-rowData let-columns="columns">
+            <tr>
+              <td pEditableColumn   *ngFor="let col of columns">
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData[col.field]}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData[col.field]}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+            <tr>
+              <td pEditableColumn *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex"
+                [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.servicio}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.servicio}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex"
+                [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.oaduana}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.oaduana}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex"
+                [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.cliente}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.cliente}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex"
+                [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.tenvio}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.tenvio}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn [ngClass]="'otra_unidad_medida'">
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.viaje}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.viaje}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.oviaje}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.oviaje}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.estado}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.estado}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.gtransporte}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.gtransporte}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.fh_hra_cita}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.fh_hra_cita}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.fh_hra_entrega}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.fh_hra_entrega}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.imo}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.imo}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn [ngClass]="'contenedorxconfirmar'">
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.contenedor}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.contenedor}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn [ngClass]="'partida_llegada'">
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.pesobruto}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.pesobruto}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.bul}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.bul}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.zona}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.zona}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.puntopartida}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.puntopartida}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.puntollegada}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.puntollegada}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.transportista}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.transportista}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.vehiculo}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.vehiculo}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.chofer}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.chofer}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.guia_aduana}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.guia_aduana}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <div class="selectCell" pInputText>
+                      {{rowData.ultincidencia}}
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{rowData.ultincidencia}}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+            </tr>
+
+          </ng-template>
+
+        </p-table>
+
+
+
+        <!-- <p-scrollPanel [style]="{width: '100%', height: '242px'}">
+          <div>
+            <p-table [value]="transporte" id="tabla2" sortField="otransporte" sortMode="single" (onSort)="onSort()"
+              [tableStyle]="{'table-layout':'auto'}" [columns]="cols" [responsive]="false">
               
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>O.Transporte</th>
+                  <th>Servicio</th>
+                  <th>O.Aduana</th>
+                  <th>Cliente</th>
+                  <th>T.Envio/UM</th>
+                  <th>Viaje</th>
+                  <th>O.Viaje</th>
+                  <th>Estado</th>
+                  <th>G.Transporte</th>
+                  <th>FH Hra Cita/Carguío</th>
+                  <th>Fch HraEntrega</th>
+                  <th>IMO</th>
+                  <th>Contenedor</th>
+                  <th>Peso Bruto</th>
+                  <th>Bul</th>
+                  <th>Zona</th>
+                  <th>Punto de Partida</th>
+                  <th>Punto de Llegada</th>
+                  <th>Transportista</th>
+                  <th>Vehiculo</th>
+                  <th>Chofer</th>
+                  <th>Guia Aduana</th>
+                  <th>Ult. Incidencia (Seguimiento)</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                <tr>
+                  <td pEditableColumn *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex"
+                    [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.otransporte}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.otransporte}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex"
+                    [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.servicio}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.servicio}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex"
+                    [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.oaduana}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.oaduana}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex"
+                    [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.cliente}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.cliente}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn *ngIf="rowGroupMetadata[rowData.otransporte].index === rowIndex"
+                    [attr.rowspan]="rowGroupMetadata[rowData.otransporte].size">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.tenvio}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.tenvio}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn [ngClass]="'otra_unidad_medida'">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.viaje}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.viaje}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.oviaje}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.oviaje}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.estado}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.estado}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.gtransporte}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.gtransporte}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.fh_hra_cita}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.fh_hra_cita}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.fh_hra_entrega}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.fh_hra_entrega}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.imo}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.imo}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn [ngClass]="'contenedorxconfirmar'">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.contenedor}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.contenedor}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn [ngClass]="'partida_llegada'">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.pesobruto}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.pesobruto}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.bul}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.bul}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.zona}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.zona}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.puntopartida}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.puntopartida}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.puntollegada}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.puntollegada}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.transportista}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.transportista}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.vehiculo}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.vehiculo}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.chofer}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.chofer}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.guia_aduana}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.guia_aduana}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <div class="selectCell" pInputText>
+                          {{rowData.ultincidencia}}
+                        </div>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.ultincidencia}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+
           </div>
+        </p-scrollPanel> -->
       </div>
-      <p-footer style="margin-top: 10px;">        
-          <button pButton type="button" label="Cancelar Viaje" icon="pi pi-times" style="margin-right: .25em"></button>
-          <button pButton type="button" label="Modificar" icon="pi pi-refresh" style="margin-right: .25em" class="ui-button-secondary"></button>
-          <button pButton type="button" label="Exonerado" icon="pi pi-times" ></button>
-      </p-footer>
-    </p-card>
+      <div class="ui-g-12">
+        <div class="detalleviaje" style="text-align: center;">
+          <h5>Detalle del viaje</h5>
+          <label style="margin-right: 10px;"><i class="fa fa-square-full" style="color: red;"></i> No tiene datos de la
+            devolución del contenedor </label>
+          <label style="margin-right: 10px;"><i class="fa fa-square-full" style="color: orange;"></i> Tiene otro punto
+            de partida/Llegada </label>
+          <label style="margin-right: 10px;"><i class="fa fa-square-full" style="color: orangered;"></i> No tiene datos
+            de exportación </label>
+          <label style="margin-right: 10px;"><i class="fa fa-square-full" style="color: skyblue;"></i> Viaje consolidado
+          </label>
+          <label style="margin-right: 10px;"><i class="fa fa-square-full" style="color: yellowgreen;"></i> Tiene otra
+            unidad de medida </label>
+          <label style="margin-right: 10px;"><i class="fa fa-square-full" style="color: plum;"></i> ContenedorXConfirmar
+          </label>
+          <label><i style="color: green; font-size: large;" class="fa fa-file-excel"></i> Exportar Excel</label>
+        </div>
+        <p-scrollPanel [style]="{width: '100%', height: '146px'}">
+          <div>
+            <p-table [value]="sales" [tableStyle]="{'table-layout':'auto'}" [columns]="cols" [responsive]="false">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th rowspan="3"></th>
+                  <th rowspan="3">Km.Inicial</th>
+                </tr>
+                <tr>
+                  <th colspan="2">Llegada Punto Carga</th>
+                  <th colspan="2">Inicio de la Carga</th>
+                  <th colspan="2">Fin de la Carga</th>
+                  <th colspan="2">Salido Punto Carga</th>
+                  <th colspan="2">Llegada Punto Entrega</th>
+                  <th colspan="2">Inicio de la Descarga</th>
+                  <th colspan="2">Fin de la Descarga</th>
+                  <th colspan="2">Salida Punto Carga</th>
+                  <th rowspan="3">Km.Inicial</th>
+                </tr>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-sale>
+                <tr>
+                  <td>{{sale.brand}}</td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="sale.kminicial">
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.kminicial}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA">
+                        </p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.lastYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.thisYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA">
+                        </p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.lastYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.thisYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA">
+                        </p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.lastYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.thisYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA">
+                        </p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.lastYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.thisYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA">
+                        </p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.lastYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.thisYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA">
+                        </p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.lastYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.thisYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA">
+                        </p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.lastYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.thisYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99/99/9999" [(ngModel)]="sale.lastYearSale" placeholder="DD/MM/AAAA">
+                        </p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.lastYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <p-inputMask mask="99:99" [(ngModel)]="sale.thisYearSale" placeholder="HH:mm"></p-inputMask>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.thisYearSale}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+
+                  <td pEditableColumn>
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="sale.kmfinal">
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{sale.kmfinal}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </p-scrollPanel>
+
+      </div>
+    </div>
+    <p-footer style="margin-top: 10px;">
+      <button pButton type="button" label="Cancelar Viaje" icon="pi pi-times" style="margin-right: .25em"></button>
+      <button pButton type="button" label="Modificar" icon="pi pi-refresh" style="margin-right: .25em"
+        class="ui-button-secondary"></button>
+      <button pButton type="button" label="Exonerado" icon="pi pi-times"></button>
+    </p-footer>
+  </p-card>
 </div>
