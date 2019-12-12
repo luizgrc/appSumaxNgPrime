@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@ang
 import { SidebarService } from '../../../../services/sidebar.service';
 
 @Component({
-  selector: 'horizontal',
+  selector: 'navbar-horizontal',
   templateUrl: './horizontal.component.html',
   styleUrls: ['./horizontal.component.scss'],
   encapsulation: ViewEncapsulation.None

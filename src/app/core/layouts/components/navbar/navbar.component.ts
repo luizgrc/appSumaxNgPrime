@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'navbar',
-  template: '<horizontal (childOnState)="EventOnState($event)"></horizontal>'
+  template: '<navbar-horizontal (childOnState)="EventOnState($event)"></navbar-horizontal>'
 })
 export class NavbarComponent implements OnInit {
   @Output() onState = new EventEmitter<string>();

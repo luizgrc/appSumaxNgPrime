@@ -3,23 +3,19 @@ import { CommonModule } from '@angular/common';
 import { NavbarModule } from '../components/navbar/navbar.module';
 import { ContentModule } from '../components/content/content.module';
 import { VerticalLayoutComponent } from './vertical-layout.component';
-import { ScrollPanelModule } from 'primeng/scrollpanel';
-import { PanelMenuModule } from 'primeng/panelmenu';
-import { TabViewModule } from 'primeng/tabview'
-import { CodeHighlighterModule } from 'primeng/codehighlighter';
+import { SidebarModule } from '../components/sidebar/sidebar.module';
 
 @NgModule({
   declarations: [
     VerticalLayoutComponent
   ],
   imports: [
+    /* Components */
     ContentModule,
     NavbarModule,
-    CommonModule,
-    ScrollPanelModule,
-    PanelMenuModule,
-    TabViewModule,
-    CodeHighlighterModule
+    SidebarModule,
+    /*/. Components */
+    CommonModule
   ],
   exports: [
     VerticalLayoutComponent
