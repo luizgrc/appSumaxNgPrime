@@ -1,0 +1,152 @@
+ul li{
+    list-style:none;
+  }
+  ul{
+    padding-left:0px;
+    padding-right:0px;
+  }
+  .home-sidebar {
+    height: 100%;
+    width: 350px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow-y: auto;
+    background:purple;
+  }
+  .avater-area{
+    padding-top:30px;
+  }
+  
+  .menu-bar {
+    margin-right: 10px;
+  }
+  .menu-bar a i{
+    font-size: 40px;
+    color: white;
+    font-weight: 700;
+  }
+  
+  .menu-bar-2 {
+    padding: 35px 20px;
+    background-color: #04acf6;
+    width: auto;
+    display: none !important;
+    text-align: center;
+  }
+  
+  .menu-bar-2 a i {
+    font-size: 25px;
+    color: white;
+  }
+  .toggled .avater-name {
+    display: none;
+  }
+  .avater-img {
+    margin-top:10px;
+    text-align:center;
+  }
+  
+  .avater-img i {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    font-size:30px;
+    background-color:#04acf6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+  }
+  .avater-name {
+    transition: .3s;
+  }
+  
+  .avater-name h4 {       
+    margin-bottom: 0px;}
+  
+  .avater-name i {
+    color: #00ff00;
+    font-size: 16px;
+    padding-left: 25px;
+  }  
+  
+  .avater-name p {
+    color: white;
+    margin-bottom: 5px;
+    opacity: .4;
+  }
+  
+  .sidebar ul li{
+    display: block;
+    list-style:none;
+  }
+  .sidebar ul li a{
+    padding: 20px 0px 0px 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .sidebar ul li a i{
+    margin-right: 20px;
+  }
+  
+  .toggled.menu-bar-2 {
+    display: block;
+  }
+  
+  .toggled.sidebar-footer {
+    display: none;
+  }
+  .toggled{
+    width: 80px;
+  }
+  .toggled.sidebar{
+    transition: .3s ease-in;
+  }
+  
+  .toggled .sidebar ul li a span {
+    opacity: 0;
+    display: none;
+    -webkit-transform: translate3d(-125px, 0, 0);
+    transform: translate3d(-125px, 0, 0);
+  }
+  
+  .toggled.sidebar ul li a{
+    padding: 20px 0px 20px 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .toggled.sidebar ul li a i{
+    margin-right: 0px;
+  }
+  .toggled.menu-bar {
+    display: none;
+  }
+  .toggled.avater-name {
+    display: none;
+  }
+  
+  .toggled ul li a i{
+    margin-right: 0px;
+  
+  }
+  .toggled .menu-bar {
+    display: none;
+  }
+  .toggled .menu-bar-2 {
+    display: block !important;
+  }
+  .menu-bar-2 {
+    padding: 35px 20px;
+    background-color: #04acf6 ;
+  }
+  .main-area{
+    margin-left:80px;
+    padding:30px;
+  }

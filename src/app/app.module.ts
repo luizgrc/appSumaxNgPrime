@@ -2,21 +2,27 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { LayoutModule } from './layout/layout.module';
+// import { TableModule } from 'primeng/table';
+// import { ButtonModule } from 'primeng/button';
+// import { InputTextModule } from 'primeng/inputtext';
+// import { LayoutModule } from './core/layout/layout.module';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { AplicacionesComponent } from './pages/aplicaciones/aplicaciones.component';
-import { VerticalLayoutComponent } from './layout/vertical-layout/vertical-layout.component';
+import { HomeComponent } from './modules/home/home.component';
+import { LoginComponent } from './modules/login/login.component';
+import { LoginModule } from './modules/login/login.module';
+import { HomeModule } from './modules/home/home.module';
+import { VerticalLayoutComponent } from '@layouts/vertical-layout/vertical-layout.component';
+import { LayoutsModule } from '@layouts/layouts.module';
+import { TestComponent } from './modules/test/test.component';
+
+
 
 
 const appRoutes: Routes = [
   {
-    path: 'pages',
+    path: 'scetransporte',
     component: VerticalLayoutComponent,
-    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+    loadChildren: () => import('./modules/scetransporte/pages/pages.module').then(m => m.PagesModule)
     // loadChildren: './pages/pages.module#PagesModule'
   },
   {
@@ -24,8 +30,12 @@ const appRoutes: Routes = [
     component : LoginComponent
   },
   {
-    path: 'aplicaciones',
-    component : AplicacionesComponent
+    path: 'home',
+    component : HomeComponent
+  },
+  {
+    path: 'test',
+    component: TestComponent
   },
   {
     path: '**',
@@ -43,10 +53,14 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    AplicacionesComponent
+    TestComponent
   ],
   imports: [
+    /* */
+    LoginModule,
+    HomeModule,
+    LayoutsModule,
+
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes,
@@ -54,11 +68,11 @@ const appRoutes: Routes = [
         preloadingStrategy: PreloadAllModules
       }),
 
-    TableModule,
+    // TableModule,
 
-    ButtonModule,
-    InputTextModule,
-    LayoutModule
+    // ButtonModule,
+    // InputTextModule,
+    // LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
