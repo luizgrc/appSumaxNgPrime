@@ -6,7 +6,7 @@ $primaryTextColor:#ffffff;
 
 //Global
 $fontFamily: "Open Sans","Helvetica Neue",sans-serif;
-$fontSize:14px;
+$fontSize:12px;
 $textColor:#666666;
 $textSecondaryColor:#a6a6a6;
 $borderRadius:2px;
@@ -24,7 +24,7 @@ $highlightBgColorDark:#8DC8B5;
 $highlightColorText:#385048;
 
 //input field (e.g. inputtext, spinner, inputmask)
-$inputPadding:0.429em;
+$inputPadding:0;
 $inputBgColor:#f4f4f4;
 $inputBorder:1px solid #dadada;
 $inputHoverBorderColor:#a6a6a6;
@@ -85,7 +85,7 @@ $inputOverlayShadow:0 0 6px 0 rgba(0, 0, 0, 0.16);
 $inputDropdownIconColor:$textColor;
 
 //button
-$buttonTextOnlyPadding:0.429em 1em;
+$buttonTextOnlyPadding:0;
 $buttonWithLeftIconPadding:0.429em 1em 0.429em 2em;
 $buttonWithRightIconPadding:0.429em 2em 0.429em 1em;
 $buttonIconOnlyPadding:0.429em;
@@ -343,6 +343,7 @@ $scrollPanelTrackBgColor:#d63031;
 
 //card
 $cardShadow:0 0 6px 0 rgba(0, 0, 0, 0.16);
+$cardTittleSize: 1.20em;
 
 //paginator
 $paginatorBgColor:#ffffff;

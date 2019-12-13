@@ -7,11 +7,4 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 /*Add primeng Rhe theme*/
 @import "@primeng-rhea/rhea/theme";
-body {
-  .ui-widget {
-    font-size: 12px !important;
-    // @media (max-width: 1366px) {
-    //   font-size: 12px !important;
-    // }
-  }
-}
+
