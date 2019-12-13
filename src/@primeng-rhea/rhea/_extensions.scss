@@ -63,8 +63,23 @@ body {
       }
     }
   }
-  .ui-g{
-    margin : 3px 0 3px 0;
+  .ui-g {
+    margin: 3px 0 3px 0;
+  }
+  .nonecorner-rigth.ui-splitbutton {
+    float: right;
+    .ui-corner-right {
+      display: none;
+    }
+  }
+  .ui-fieldset {
+    .ui-fieldset-legend {
+      a {
+        border-bottom: 1px solid #ddd;
+        color: $textColor;
+        background-color: transparent;
+      }
+    }
   }
 }
 // #style-3::-webkit-scrollbar-track

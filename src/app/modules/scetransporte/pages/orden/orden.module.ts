@@ -18,6 +18,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 import { ReporteComponent } from './reporte/reporte.component';
 import { HttpClientModule } from '@angular/common/http';
 import {TreeTableModule} from 'primeng/treetable';
+import {SplitButtonModule} from 'primeng/splitbutton';
 
 
 
@@ -39,6 +40,8 @@ import {TreeTableModule} from 'primeng/treetable';
     CheckboxModule,
     HttpClientModule,
     TreeTableModule,
+    SplitButtonModule,
+    
 
     // Registro
     CardModule,
