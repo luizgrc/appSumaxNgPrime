@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
-@import "~@fortawesome/fontawesome-free/css/all.css";
 
 /*Customize colors*/
 $overlay-color: #e22f22;
@@ -18,7 +16,7 @@ $background-body-color: #f2f2f2;
 
 body {
   // font-family: "Montserrat", sans-serif;
-  font-family: "cabin", sans-serif;
+  // font-family: "cabin", sans-serif;
   background-color: $background-body-color;
   display: flex;
   flex-direction: column;

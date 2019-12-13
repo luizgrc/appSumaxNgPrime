@@ -60,7 +60,6 @@ const appRoutes: Routes = [
     LoginModule,
     HomeModule,
     LayoutsModule,
-
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes,
