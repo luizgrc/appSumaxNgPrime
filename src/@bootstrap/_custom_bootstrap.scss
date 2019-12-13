@@ -1,7 +1,22 @@
 body {
   fieldset {
+    background-color: transparent;
     legend {
       @include font-size(1.2em);
+      width: auto;
+      background-color: transparent;
+      
+      color: $textColor;
+      font-weight: bold;
+      padding: 3px 5px 3px 7px;
+      a{
+        border-bottom: 1px solid #ddd;
+        color: $textColor;
+        background-color: transparent;
+      }
     }
+  }
+  .tittle-group {
+    margin-bottom: 0.25rem;
   }
 }
