@@ -1,92 +1,94 @@
-<div class="contenido">
-    <div class="ui-g-12">
-        <p-card header="Seguimiento Transporte">
-            <div class="body-card">
+<div class="lista-orden ui-g-12">
+  <p-card>
+    <p-header>
+      <div class="card-header">
+        <span>Seguimiento Transporte</span>
+      </div>
+    </p-header>
+    <div class="body-card">
 
-                <p-fieldset legend="Filtros" [toggleable]="true">
-                    <div class="ui-g">
-                        <div class="ui-g-12 ui-md-6 ui-lg-2">
-                            <p>o Transporte</p>
-                            <p-inputMask mask="9999-99-999999" [(ngModel)]="val1" placeholder="9999-99-999999"></p-inputMask>
-                        </div>
-                        <div class="ui-g-12 ui-md-6 ui-lg-2">
-                            <p>T. Servicio</p>
-                            <p-dropdown [options]="cars" [(ngModel)]="selectedCar2" filter="true">
-                                <ng-template let-item pTemplate="selectedItem">
-                                    <img src="assets/showcase/images/demo/car/{{item.p}}.png"
-                                        style="width:16px;vertical-align:middle" />
-                                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
-                                </ng-template>
-                                <ng-template let-car pTemplate="item">
-                                    <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
-                                        <img src="assets/showcase/images/demo/car/{{car.label}}.png"
-                                            style="width:24px;position:absolute;top:1px;left:5px" />
-                                        <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
-                                    </div>
-                                </ng-template>
-                            </p-dropdown>
-                        </div>
-                        <div class="ui-g-12 ui-md-6 ui-lg-2">
-                            <p>Estado</p>
-                            <p-dropdown [options]="cars" [(ngModel)]="selectedCar2" filter="true">
-                                <ng-template let-item pTemplate="selectedItem">
-                                    <img src="assets/showcase/images/demo/car/{{item.p}}.png"
-                                        style="width:16px;vertical-align:middle" />
-                                    <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
-                                </ng-template>
-                                <ng-template let-car pTemplate="item">
-                                    <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
-                                        <img src="assets/showcase/images/demo/car/{{car.label}}.png"
-                                            style="width:24px;position:absolute;top:1px;left:5px" />
-                                        <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
-                                    </div>
-                                </ng-template>
-                            </p-dropdown>
-                        </div>
-                        <div class="ui-g-12 ui-md-6 ui-lg-2">
-                            <button pButton type="button" label="Consultar"
-                                class="ui-button-raised ui-button-success"></button>
-                        </div>
-                    </div>
-                </p-fieldset>
-            </div>
-            <div class="body-table">
-                <div class="ui-g">
-                    <div class="ui-g-12 ui-md-12 ui-lg-22">
-                        <h3>Checkbox</h3>
-                        <p-treeTable [value]="files" [columns]="cols" selectionMode="checkbox"
-                            [(selection)]="selectedNodes3">
-                            <ng-template pTemplate="caption">
-                                <div style="text-align:left">
-                                    <p-treeTableHeaderCheckbox></p-treeTableHeaderCheckbox>
-                                    <span style="margin-left: .25em; vertical-align: middle">Toggle All</span>
-                                </div>
-                            </ng-template>
-                            <ng-template pTemplate="header" let-columns>
-                                <tr>
-                                    <th *ngFor="let col of columns">
-                                        {{col.header}}
-                                    </th>
-                                </tr>
-                            </ng-template>
-                            <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
-                                <tr>
-                                    <td *ngFor="let col of columns; let i = index">
-                                        <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
-                                        <p-treeTableCheckbox [value]="rowNode" *ngIf="i == 0"></p-treeTableCheckbox>
-                                        {{rowData[col.field]}}
-                                    </td>
-                                </tr>
-                            </ng-template>
-
-                        </p-treeTable>
-                    </div>
+      <p-fieldset legend="Filtros" [toggleable]="true">
+        <div class="ui-g">
+          <div class="ui-lg-4">
+            <span>Orden de Transporte</span>
+            <p-inputMask id="OrdnTransporte" mask="9999-99-999999" [(ngModel)]="val1" placeholder="9999-99-999999">
+            </p-inputMask>
+          </div>
+          <div class="ui-lg-2">
+            <span>T. Servicio</span>
+            <p-dropdown [options]="cars" [(ngModel)]="selectedCar2" filter="true">
+              <ng-template let-item pTemplate="selectedItem">
+                <img src="assets/showcase/images/demo/car/{{item.p}}.png" style="width:16px;vertical-align:middle" />
+                <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+              </ng-template>
+              <ng-template let-car pTemplate="item">
+                <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                  <img src="assets/showcase/images/demo/car/{{car.label}}.png"
+                    style="width:24px;position:absolute;top:1px;left:5px" />
+                  <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
                 </div>
-            </div>
-            <p-footer>
-                Footer content here
-            </p-footer>
-        </p-card>
-
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="ui-lg-2">
+            <span>Estado</span>
+            <p-dropdown [options]="cars" [(ngModel)]="selectedCar2" filter="true">
+              <ng-template let-item pTemplate="selectedItem">
+                <img src="assets/showcase/images/demo/car/{{item.p}}.png" style="width:16px;vertical-align:middle" />
+                <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+              </ng-template>
+              <ng-template let-car pTemplate="item">
+                <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                  <img src="assets/showcase/images/demo/car/{{car.label}}.png"
+                    style="width:24px;position:absolute;top:1px;left:5px" />
+                  <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g">
+          <div class="ui-lg-1">
+            <button pButton type="button" label="Consultar" class="ui-button-raised ui-button-success"></button>
+          </div>
+        </div>
+      </p-fieldset>
     </div>
+    <div class="body-table">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-lg-22">
+          <h3>Checkbox</h3>
+          <p-treeTable [value]="files" [columns]="cols" selectionMode="checkbox" [(selection)]="selectedNodes3">
+            <ng-template pTemplate="caption">
+              <div style="text-align:left">
+                <p-treeTableHeaderCheckbox></p-treeTableHeaderCheckbox>
+                <span style="margin-left: .25em; vertical-align: middle">Toggle All</span>
+              </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{col.header}}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns; let i = index">
+                  <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+                  <p-treeTableCheckbox [value]="rowNode" *ngIf="i == 0"></p-treeTableCheckbox>
+                  {{rowData[col.field]}}
+                </td>
+              </tr>
+            </ng-template>
+
+          </p-treeTable>
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      Footer content here
+    </p-footer>
+  </p-card>
+
 </div>

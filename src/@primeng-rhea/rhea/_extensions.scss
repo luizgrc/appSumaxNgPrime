@@ -31,6 +31,41 @@ body {
   .ui-card-title {
     font-size: $cardTittleSize;
   }
+  @for $i from 1 through 12 {
+    .ui-g- {
+      &#{$i} {
+        // padding : unset;
+        padding: 0 0 0 0.2rem;
+        input {
+          width: 100%;
+        }
+        label {
+          vertical-align: middle;
+        }
+      }
+    }
+    .ui-lg- {
+      &#{$i} {
+        // padding : unset;
+        padding: 0 0 0 0.2rem;
+        // .ui-inputtext {
+        //   width: 100%;
+        // }
+        p-inputmask {
+          width: 100%;
+        }
+        label {
+          vertical-align: middle;
+        }
+        .ui-dropdown {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .ui-g{
+    margin : 3px 0 3px 0;
+  }
 }
 // #style-3::-webkit-scrollbar-track
 // {

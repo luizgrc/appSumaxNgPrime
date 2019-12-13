@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { TreeNode, MessageService } from 'primeng/api';
 import { OrdenService } from '@services/orden.service';
 
 @Component({
   selector: 'lista-orden',
   templateUrl: './lista-orden.component.html',
-  styleUrls: ['./lista-orden.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./lista-orden.component.scss']
 })
 export class ListaOrdenComponent implements OnInit {
 

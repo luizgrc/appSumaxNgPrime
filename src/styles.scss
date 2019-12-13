@@ -1,21 +1,21 @@
 
 
-/* Customize Bootstrap*/
+/* Customize Bootstrap 4.4.1*/
 
 /* Opcion A Obtener todos los estilos de bootstrap en un solo scss para modificar*/
-// @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap";
 
 /* Opcion B Obtener todos los estilos de bootstrap necesarios para modificar (para minimizar el peso del compilado)*/
 /*Requerido*/
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
-/*Opcional*/
-@import "~bootstrap/scss/reboot";
-@import "~bootstrap/scss/type";
-@import "~bootstrap/scss/images";
-@import "~bootstrap/scss/code";
-@import "~bootstrap/scss/grid";
+// @import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/mixins";
+// /*Opcional*/
+// @import "~bootstrap/scss/reboot";
+// @import "~bootstrap/scss/type";
+// @import "~bootstrap/scss/images";
+// @import "~bootstrap/scss/code";
+// @import "~bootstrap/scss/grid";
 
 @import "@bootstrap/custom_bootstrap";
 
