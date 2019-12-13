@@ -3,104 +3,117 @@ import { TreeNode, MessageService } from 'primeng/api';
 import { OrdenService } from '@services/orden.service';
 
 @Component({
-  selector: 'lista-orden',
-  templateUrl: './lista-orden.component.html',
-  styleUrls: ['./lista-orden.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'lista-orden',
+    templateUrl: './lista-orden.component.html',
+    styleUrls: ['./lista-orden.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class ListaOrdenComponent implements OnInit {
 
-  files: TreeNode[];
-  cols: any[];
-  constructor() { }
+    files: TreeNode[];
+    cols: any[];
+    colschild: any[];
+    constructor() { }
 
-  ngOnInit() {
-    this.cols = [
-			{ field: 'name', header: 'Name' },
-			{ field: 'size', header: 'Size' },
-			{ field: 'type', header: 'Type' }
-		];
-    this.files=[
-      {
-          "data":{
-              "name":"Documents",
-              "size":"75kb",
-              "type":"Folder"
-          },
-          "children":[
-              {
-                  "data":{
-                      "name":"Work",
-                      "size":"55kb",
-                      "type":"Folder"
-                  },
-                  "children":[
-                      {
-                          "data":{
-                              "name":"Expenses.doc",
-                              "size":"30kb",
-                              "type":"Document"
-                          }
-                      },
-                      {
-                          "data":{
-                              "name":"Resume.doc",
-                              "size":"25kb",
-                              "type":"Resume"
-                          }
-                      }
-                  ]
-              },
-              {
-                  "data":{
-                      "name":"Home",
-                      "size":"20kb",
-                      "type":"Folder"
-                  },
-                  "children":[
-                      {
-                          "data":{
-                              "name":"Invoices",
-                              "size":"20kb",
-                              "type":"Text"
-                          }
-                      }
-                  ]
-              }
-          ]
-      },
-      {
-          "data":{
-              "name":"Pictures",
-              "size":"150kb",
-              "type":"Folder"
-          },
-          "children":[
-              {
-                  "data":{
-                      "name":"barcelona.jpg",
-                      "size":"90kb",
-                      "type":"Picture"
-                  }
-              },
-              {
-                  "data":{
-                      "name":"primeui.png",
-                      "size":"30kb",
-                      "type":"Picture"
-                  }
-              },
-              {
-                  "data":{
-                      "name":"optimus.jpg",
-                      "size":"30kb",
-                      "type":"Picture"
-                  }
-              }
-          ]
-      }
-  ];
-  }
+    ngOnInit() {
+        this.cols = [
+            { field: 'nro_orden', header: 'Nro Orden Transporte', header2: 'Nro Orden Viaje' },
+            { field: 'fch_estimada_entrega', header: 'Fecha Estimada de Entrega', header2: 'Fecha Estimada de Entrega' },
+            { field: 'punto_partida', header: 'Punto de Partida', header2: 'Punto de Partida' },
+            { field: 'punto_llegada', header: 'Punto de Llegada', header2: 'Punto de Llegada' }
+        ];
+
+        this.files = [
+            {
+                "data": {
+                    "nro_orden": "19/00/000001",
+                    "fch_estimada_entrega": "",
+                    "punto_partida": "",
+                    "punto_llegada": "",
+                    "orden": ""
+                },
+                "children": [
+                    {
+                        "data": {
+                            "nro_orden": "19/00/000011",
+                            "fch_estimada_entrega": "10/12/2019",
+                            "punto_partida": "DP World",
+                            "punto_llegada": "Local de cliente",
+                            "orden": "1"
+
+                        }
+                    },
+                    {
+                        "data": {
+                            "nro_orden": "19/00/000012",
+                            "fch_estimada_entrega": "10/12/2019",
+                            "punto_partida": "DP World",
+                            "punto_llegada": "Local de cliente",
+                            "orden": "2"
+                        },
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "nro_orden": "19/00/000002",
+                    "fch_estimada_entrega": "",
+                    "punto_partida": "",
+                    "punto_llegada": "",
+                    "orden": ""
+                },
+                "children": [
+                    {
+                        "data": {
+                            "nro_orden": "19/00/000021",
+                            "fch_estimada_entrega": "10/12/2019",
+                            "punto_partida": "DP World",
+                            "punto_llegada": "Local de cliente",
+                            "orden": "1"
+                        }
+                    },
+                    {
+                        "data": {
+                            "nro_orden": "19/00/000022",
+                            "fch_estimada_entrega": "10/12/2019",
+                            "punto_partida": "DP World",
+                            "punto_llegada": "Local de cliente",
+                            "orden": "2"
+                        },
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "nro_orden": "19/00/000003",
+                    "fch_estimada_entrega": "",
+                    "punto_partida": "",
+                    "punto_llegada": "",
+                    "orden": ""
+                },
+                "children": [
+                    {
+                        "data": {
+                            "nro_orden": "19/00/000031",
+                            "fch_estimada_entrega": "10/12/2019",
+                            "punto_partida": "DP World",
+                            "punto_llegada": "Local de cliente",
+                            "orden": "1"
+                        }
+                    },
+                    {
+                        "data": {
+                            "nro_orden": "19/00/000032",
+                            "fch_estimada_entrega": "10/12/2019",
+                            "punto_partida": "DP World",
+                            "punto_llegada": "Local de cliente",
+                            "orden": "2"
+                        },
+                    }
+                ]
+            }
+        ];
+    }
 
 
 }
