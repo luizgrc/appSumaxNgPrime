@@ -16,6 +16,9 @@ import {InputMaskModule} from 'primeng/inputmask';
 import {CalendarModule} from 'primeng/calendar';
 import {CheckboxModule} from 'primeng/checkbox';
 import { ReporteComponent } from './reporte/reporte.component';
+import { HttpClientModule } from '@angular/common/http';
+import {TreeTableModule} from 'primeng/treetable';
+
 
 
 @NgModule({
@@ -34,6 +37,8 @@ import { ReporteComponent } from './reporte/reporte.component';
     InputMaskModule,
     CalendarModule,
     CheckboxModule,
+    HttpClientModule,
+    TreeTableModule,
 
     // Registro
     CardModule,

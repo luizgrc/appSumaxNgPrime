@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  encapsulation : ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
   slide: boolean = false;
