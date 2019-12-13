@@ -1,5 +1,7 @@
 body {
   fieldset {
-    @include font-size(1.2rem);
+    legend {
+      @include font-size(1.2em);
+    }
   }
 }
